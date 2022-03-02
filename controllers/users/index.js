@@ -6,8 +6,15 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // const user = req.body;
-    Users.getUsers;
+    Users.getAll().then((users) => {
+        res.json(users);
+    });
+});
+
+router.get('/:id', (req, res) => {
+    Users.getById(req.params.id).then((user) => {
+        res.json(user);
+    });
 });
 
 router.post('/', userCreateValidator, (req, res, next) => {
