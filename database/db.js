@@ -24,7 +24,7 @@
 const pg = require('pg');
 
 const db = new pg.Pool({
-    database: 'ok_bloomer',
+    database: 'okay_bloomer',
 });
 
 module.exports = db;
