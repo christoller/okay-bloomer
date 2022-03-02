@@ -21,7 +21,7 @@ CREATE TABLE users (
   username varchar(30) not null unique,
   password varchar(30) not null,
   email varchar(255) not null unique,
-  favourite_plants integer array,
+  favourite_plants integer array
 );
 
 CREATE TABLE user_plant_schedule (
