@@ -21,7 +21,6 @@ const Plants = {
         sunlight,
         image_url,
         plant_location,
-        location_types,
         fertilising_frequency_in_days,
         pruning_frequency_in_days,
         repotting_frequency_in_days,
@@ -36,12 +35,11 @@ const Plants = {
             sunlight,
             image_url,
             plant_location,
-            location_types,
             fertilising_frequency_in_days,
             pruning_frequency_in_days,
             repotting_frequency_in_days,
             soil_type) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) 
         RETURNING *`;
         return db
             .query(query, [
@@ -52,7 +50,6 @@ const Plants = {
                 sunlight,
                 image_url,
                 plant_location,
-                location_types,
                 fertilising_frequency_in_days,
                 pruning_frequency_in_days,
                 repotting_frequency_in_days,
