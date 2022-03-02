@@ -8,6 +8,7 @@ const pgSession = require('connect-pg-simple')(expressSession);
 const db = require('./database/db');
 
 const usersController = require('./controllers/users');
+const plantsController = require('./controllers/plants');
 
 // const errorHandler = require('./middleware/error_handler');
 // const logger = require('./middleware/logger');
@@ -38,7 +39,10 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', usersController);
+app.use('/api/plants', plantsController);
+
 // app.use('/api/')
+
 // app.use(errorHandler);
 
 app.listen(port, () => {
