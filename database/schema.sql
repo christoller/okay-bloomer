@@ -1,4 +1,8 @@
-CREATE TYPE sunlight_types AS ENUM ('full sun', 'partial', 'full shade');
+DROP TABLE IF EXISTS user_plant_schedule;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS plants;
+
+CREATE TYPE sunlight_types AS ENUM ('full sun', 'partial', 'full shade'); 
 CREATE TYPE location_types AS ENUM ('outdoor', 'indoor', 'both');
 
 CREATE TABLE plants (
@@ -21,7 +25,7 @@ CREATE TABLE users (
   username varchar(30) not null unique,
   password varchar(255) not null,
   email varchar(255) not null unique,
-  favourite_plants integer array
+  favourite_plants integer array DEFAULT '{}' not null
 );
 
 CREATE TABLE user_plant_schedule (

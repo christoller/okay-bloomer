@@ -13,6 +13,12 @@ const Plants = {
             return response.rows ? response.rows[0] : {};
         });
     },
+    getByName: (name) => {
+        const query = `SELECT * FROM plants WHERE name = %${name}%`;
+        return db.query(query).then((response) => {
+            return response.rows ? response.rows[0] : {};
+        });
+    },
     create: ({
         name,
         latin_name,

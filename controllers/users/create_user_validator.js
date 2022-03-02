@@ -1,28 +1,84 @@
-const userCreateValidator = (req, res, next) => {
+const { getByUsername, getByEmail } = require('../../models/users');
+
+const userCreateValidator = async (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-    if (!username || !password) {
+    const email = req.body.email;
+    const allowedFields = ['username', 'password', 'email'];
+    console.log(Object.keys(req.body));
+    console.log(
+        Object.keys(req.body).filter((field) => !allowedFields.includes(field))
+    );
+    if (
+        Object.keys(req.body).filter((field) => !allowedFields.includes(field))
+            .length >= 1
+    ) {
         return res.status(400).json({
+            message: 'Only username, password and email fields allowed.',
+        });
+    }
+    if (!username || !password) {
+        return res.status(422).json({
             message: 'Please provide a username and a password.',
         });
     }
     if (username.length < 4) {
-        return res.status(400).json({
+        return res.status(422).json({
             message: 'Username must be at least 4 characters.',
         });
     }
     if (username.length > 30) {
-        return res.status(400).json({
-            message: 'Username cannot be greater than 30 characters.',
+        return res.status(422).json({
+            message: 'Username cannot exceed 30 characters.',
         });
     }
     if (password.length < 8) {
-        return res.status(400).json({
+        return res.status(422).json({
             message: 'Password must be at least 8 characters.',
         });
     }
-
+    if (!password.match(/[a-z]+/)) {
+        return res.status(422).json({
+            message: 'Password must contain a lower case letter.',
+        });
+    }
+    if (!password.match(/[A-Z]+/)) {
+        return res.status(422).json({
+            message: 'Password must contain an upper case letter.',
+        });
+    }
+    if (!password.match(/[!@#$%^&*()~<>\[\]\\\/?{}'";:,.=+|_-`]+/)) {
+        return res.status(422).json({
+            message: 'Password must contain a special character.',
+        });
+    }
+    if (!password.match(/[0-9]+/)) {
+        return res.status(422).json({
+            message: 'Password must contain a number.',
+        });
+    }
+    // AWAIT SOLUTION TO ASYNC ISSUE
+    if (await getByUsername(username)) {
+        return res.status(422).json({
+            message: 'That username is already taken.',
+        });
+    }
+    if (await getByEmail(email)) {
+        return res.status(422).json({
+            message: 'That email is already taken.',
+        });
+    }
     next();
+    // .THEN SOLUTION TO ASYNC ISSUE
+    // usernameExists(username).then((results) => {
+    //     if (results) {
+    //         return res.status(422).json({
+    //             message: 'That username is already taken.',
+    //         });
+    //     } else {
+    //         next();
+    //     }
+    // });
 };
 
 module.exports = userCreateValidator;
