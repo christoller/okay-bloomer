@@ -1,7 +1,7 @@
 const db = require('../database/db');
 
 const Users = {
-    getUsers: () => {
+    getAll: () => {
         const query = 'SELECT * FROM users';
         return db.query(query).then((response) => {
             return response.rows && response.rows.length > 0
