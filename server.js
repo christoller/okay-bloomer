@@ -34,10 +34,6 @@ app.use(
 app.use(express.json());
 app.use(express.static('client'));
 
-app.get('/', (req, res) => {
-    res.send('hello');
-});
-
 app.use('/api/users', usersController);
 app.use('/api/plants', plantsController);
 

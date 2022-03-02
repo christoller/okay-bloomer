@@ -19,7 +19,7 @@ CREATE TABLE plants (
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username varchar(30) not null unique,
-  password varchar(30) not null,
+  password varchar(255) not null,
   email varchar(255) not null unique,
   favourite_plants integer array
 );

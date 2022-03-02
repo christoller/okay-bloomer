@@ -31,6 +31,8 @@ router.post('/', userCreateValidator, (req, res, next) => {
             }
             req.session.userId = user.id;
             req.session.username = user.username;
+            req.session.userEmail = user.email;
+            req.session.userFavouritePlants = user.favourite_plants;
             return res.json(user);
         })
         .catch((error) => {
