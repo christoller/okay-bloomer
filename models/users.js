@@ -25,14 +25,16 @@ const Users = {
                 : null;
         });
     },
-    create: ({ username, password, admin = false }) => {
+    create: ({ username, password, email, favourite_plants }) => {
         const query =
-            'INSERT INTO users (username, password, admin) VALUES($1, $2, $3) RETURNING *';
-        return db.query(query, [username, password, admin]).then((response) => {
-            return response.rows && response.rows.length > 0
-                ? response.rows[0]
-                : null;
-        });
+            'INSERT INTO users (username, password, email, favourite_plants) VALUES($1, $2, $3, $4) RETURNING *';
+        return db
+            .query(query, [username, password, email, favourite_plants])
+            .then((response) => {
+                return response.rows && response.rows.length > 0
+                    ? response.rows[0]
+                    : null;
+            });
     },
 };
 

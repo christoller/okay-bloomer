@@ -11,6 +11,11 @@ const userCreateValidator = (req, res, next) => {
             message: 'Username must be at least 4 characters.',
         });
     }
+    if (username.length > 30) {
+        return res.status(400).json({
+            message: 'Username cannot be greater than 30 characters.',
+        });
+    }
     if (password.length < 8) {
         return res.status(400).json({
             message: 'Password must be at least 8 characters.',
