@@ -1,7 +1,7 @@
 {
   "name": "okay-bloomer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Rob's making changes to the repo again!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
