@@ -40,6 +40,9 @@ app.get('/', (req, res) => {
 
 app.use('/api/users', usersController);
 app.use('/api/plants', plantsController);
+
+// app.use('/api/')
+
 // app.use(errorHandler);
 
 app.listen(port, () => {
