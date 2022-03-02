@@ -1,9 +1,10 @@
 const db = require('../database/db');
 
 const Plants = {
-    getAll: () => {
-        const query = 'SELECT * FROM plants';
-        return db.query(query).then((response) => {
+    getAll: (name) => {
+        const query = 'SELECT * FROM PLANTS WHERE name ILIKE $1';
+
+        return db.query(query, [`%${name}%`]).then((response) => {
             return response.rows;
         });
     },
@@ -13,12 +14,12 @@ const Plants = {
             return response.rows ? response.rows[0] : {};
         });
     },
-    getByName: (name) => {
-        const query = `SELECT * FROM plants WHERE name = %${name}%`;
-        return db.query(query).then((response) => {
-            return response.rows ? response.rows[0] : {};
-        });
-    },
+    // getByName: (name) => {
+    //     const query = `SELECT * FROM plants WHERE name ILIKE $1`;
+    //     return db.query(query, [`%${name}%`]).then((response) => {
+    //         return response.rows ? response.rows[0] : {};
+    //     });
+    // },
     create: ({
         name,
         latin_name,
