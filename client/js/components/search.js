@@ -1,6 +1,3 @@
-const searchInput = document.querySelector('#search-term');
-const searchButton = document.querySelector('#search-btn');
-
 function renderSearch() {
     const page = document.querySelector('#page');
     page.innerHTML = `
@@ -12,4 +9,11 @@ function renderSearch() {
             <div class="search-results"></div>
         </div>
     `;
+    const searchInput = document.querySelector('#search-term');
+    const searchButton = document.querySelector('#search-btn');
+
+    searchButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        renderSearchResults(searchInput.value);
+    });
 }
