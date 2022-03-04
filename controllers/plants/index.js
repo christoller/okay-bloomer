@@ -4,7 +4,7 @@ const Plants = require('../../models/plants');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    Plants.getAll().then((plants) => {
+    Plants.getAll(req.query?.search || '').then((plants) => {
         res.json(plants);
     });
 });
