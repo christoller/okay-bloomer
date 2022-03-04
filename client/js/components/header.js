@@ -15,8 +15,8 @@ function renderHeader(session = {}) {
     } else {
         header.innerHTML += `
         <ul id="navlist">
-            <li onClick="#####">Sign up</li>
-            <li onClick="#####">Login</li>
+            <li onClick="renderSignupForm()">Sign up</li>
+            <li onClick="renderLoginForm()">Login</li>
         </ul>
         `;
     }
