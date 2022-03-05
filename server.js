@@ -7,6 +7,7 @@ const expressSession = require('express-session');
 const pgSession = require('connect-pg-simple')(expressSession);
 const db = require('./database/db');
 
+const scheduleController = require('./controllers/schedule');
 const sessionsController = require('./controllers/sessions');
 const usersController = require('./controllers/users');
 const plantsController = require('./controllers/plants');
@@ -35,6 +36,7 @@ app.use(
 app.use(express.json());
 app.use(express.static('client'));
 
+app.use('/api/schedule', scheduleController);
 app.use('/api/sessions', sessionsController);
 app.use('/api/users', usersController);
 app.use('/api/plants', plantsController);
