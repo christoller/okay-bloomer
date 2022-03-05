@@ -1,3 +1,7 @@
+insert into users (username, password, email) values ( 'AWasasddasdal',
+    '$2b$10$JmjFSeVqdLqd5wAlzPnnM.5e82ZsNoH03eRJO1E9jxTjRKKeAHQ4C',
+    'andrasasddsadewwal@gmail.com');
+
 insert into plants (name, latin_name, description, watering_frequency_in_days, sunlight, image_url, plant_location, fertilising_frequency_in_days, pruning_frequency_in_days, repotting_frequency_in_days, soil_type) values ('Geranium', 'Pelargonium', 'With more than 300 varieties in Australia, there''s a geranium to suit any garden with a great range of colours, shapes and styles. Most geraniums are low spreading plants, with hairy, hand-shaped leaves. In spring, they bloom into colours ranging from red, white, pink, salmon to dark purple and even black.', 7, 'full sun', 'https://media.prod.bunnings.com.au/api/public/content/06b03979a0374b7e895274a8ce6b9f38?v=fb7384a0&t=w500dpr1', 'both', 10, 365, 100, 'Potting mix, with equal amounts soil, peat moss and perlite.');
 
 insert into plants (name, latin_name, description, watering_frequency_in_days, sunlight, image_url, plant_location, fertilising_frequency_in_days, pruning_frequency_in_days, repotting_frequency_in_days, soil_type) values ('Peace Lily ', 'Spathiphyllum', 'Hardy and very tolerant of low light situations making them ideal interior plants for that darker corner or mass planting where a dramatic foliage effect is needed', 7, 'full shade', 'https://media.prod.bunnings.com.au/api/public/content/bf83ed9c73ca41c78a2b76b98b441513?v=e2a19639&t=w500dpr1', 'indoor', 0, 50, 0, 'Perlite, peat moss, coir or loam.');

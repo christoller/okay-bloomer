@@ -22,7 +22,54 @@ router.get('/', (req, res) => {
                 };
                 results.push(result);
             }
+
+            let nextRepottingDate = moment(row.last_repotting_date);
+            while (nextRepottingDate <= lastDayOfMonth) {
+                nextRepottingDate = nextRepottingDate.add(
+                    row.repotting_frequency_in_days,
+                    'days'
+                );
+                let result = {
+                    plant: { id: row.plant_id, nickname: row.plant_nickname },
+                    dueDate: nextRepottingDate.toISOString(),
+                    action: 'repotting',
+                };
+                results.push(result);
+            }
+
+            let nextFertilisingDate = moment(row.last_fertilising_date);
+            while (nextFertilisingDate <= lastDayOfMonth) {
+                nextFertilisingDate = nextFertilisingDate.add(
+                    row.fertilising_frequency_in_days,
+                    'days'
+                );
+                let result = {
+                    plant: { id: row.plant_id, nickname: row.plant_nickname },
+                    dueDate: nextFertilisingDate.toISOString(),
+                    action: 'fertilising',
+                };
+                results.push(result);
+            }
+
+            let nextPruningDate = moment(row.last_pruning_date);
+            while (nextPruningDate <= lastDayOfMonth) {
+                nextPruningDate = nextPruningDate.add(
+                    row.pruning_frequency_in_days,
+                    'days'
+                );
+                let result = {
+                    plant: { id: row.plant_id, nickname: row.plant_nickname },
+                    dueDate: nextPruningDate.toISOString(),
+                    action: 'pruning',
+                };
+                results.push(result);
+            }
         }
+        results.sort((a, b) => {
+            const dueDateA = moment(a.dueDate);
+            const dueDateB = moment(b.dueDate);
+            return dueDateA.unix() - dueDateB.unix();
+        });
         res.json(results);
     });
 });
