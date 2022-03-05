@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
                     'days'
                 );
                 let result = {
+                    id: row.id,
                     plant: { id: row.plant_id, nickname: row.plant_nickname },
                     dueDate: nextWateringDate.toISOString(),
                     action: 'watering',
@@ -30,6 +31,7 @@ router.get('/', (req, res) => {
                     'days'
                 );
                 let result = {
+                    id: row.id,
                     plant: { id: row.plant_id, nickname: row.plant_nickname },
                     dueDate: nextRepottingDate.toISOString(),
                     action: 'repotting',
@@ -44,6 +46,7 @@ router.get('/', (req, res) => {
                     'days'
                 );
                 let result = {
+                    id: row.id,
                     plant: { id: row.plant_id, nickname: row.plant_nickname },
                     dueDate: nextFertilisingDate.toISOString(),
                     action: 'fertilising',
@@ -58,6 +61,7 @@ router.get('/', (req, res) => {
                     'days'
                 );
                 let result = {
+                    id: row.id,
                     plant: { id: row.plant_id, nickname: row.plant_nickname },
                     dueDate: nextPruningDate.toISOString(),
                     action: 'pruning',
@@ -74,11 +78,24 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-    const data = req.body
-    Schedule.create({...data, user_id: req.session.userId}).then((schedule) => {
+router.patch('/:id', (req, res) => {
+    const data = req.body;
+    Schedule.update({
+        ...data,
+        id: req.params.id,
+        user_id: req.session.userId,
+    }).then((schedule) => {
         res.json(schedule);
     });
+});
+
+router.post('/', (req, res) => {
+    const data = req.body;
+    Schedule.create({ ...data, user_id: req.session.userId }).then(
+        (schedule) => {
+            res.json(schedule);
+        }
+    );
 });
 
 module.exports = router;
