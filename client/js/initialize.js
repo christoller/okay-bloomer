@@ -1,9 +1,4 @@
-// renderPlant(1);
-// renderHeader();
-// renderSearch();
-
 renderAppWithoutSession();
-
 renderAppWithSession();
 
 function renderAppWithoutSession() {
