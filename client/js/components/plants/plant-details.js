@@ -20,7 +20,16 @@ function renderPlant(id) {
             <div>${plant.repotting_frequency_in_days}</div>
             <div>${plant.repotting_frequency_in_days}</div>
             <div>${plant.soil_type}</div>
-            <button onclick="addToSchedule()">Add to Schedule</button>
+            <button id="add-plant-to-schedule">Add to Schedule</button>
         `;
+        const addPlantToScheduleButton = document.querySelector(
+            '#add-plant-to-schedule'
+        );
+
+        addPlantToScheduleButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(plant);
+            addPlantToSchedule(plant);
+        });
     });
 }
