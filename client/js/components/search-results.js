@@ -8,7 +8,7 @@ function renderSearchResults(searchQuery) {
         results.forEach((result) => {
             const item = document.createElement('div');
             item.innerHTML = `
-                <div id="search-result" onclick="renderPlant(${result.id})">
+                <div class="search-result" onclick="renderPlant(${result.id})">
                     <h3> ${result.name} </h3>
                         <img src="${result.image_url}" height=200px width=200px ></img>
                         <p>Latin name: <i> ${result.latin_name} </i></p>
