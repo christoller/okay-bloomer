@@ -4,7 +4,16 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     Schedule.getById(req.session.userId).then((schedule) => {
-        res.json(schedule);
+        let results = [];
+        for (const row of schedule) {
+            let result = {
+                plant: { id: row.plant_id, nickname: row.plant_nickname },
+                dueDate: new Date(),
+                action: 'Watering',
+            };
+            results.push(result);
+        }
+        res.json(results);
     });
 });
 

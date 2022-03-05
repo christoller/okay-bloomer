@@ -33,10 +33,10 @@ CREATE TABLE user_plant_schedule (
   user_id integer not null,
   plant_id integer not null,
   plant_nickname varchar(50),
-  last_watering_date smallint not null,
-  last_fertilising_date smallint not null,
-  last_repotting_date smallint not null,
-  last_pruning_date smallint not null,
+  last_watering_date timestamptz not null,
+  last_fertilising_date timestamptz not null,
+  last_repotting_date timestamptz not null,
+  last_pruning_date timestamptz not null,
   CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
   CONSTRAINT fk_plant FOREIGN KEY(plant_id) REFERENCES plants(id)
 );
