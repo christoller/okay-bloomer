@@ -2,8 +2,8 @@ const express = require('express');
 const Schedule = require('../../models/schedule');
 const router = express.Router();
 
-router.get('/:id', (req, res) => {
-    Schedule.getById(req.params.id).then((schedule) => {
+router.get('/', (req, res) => {
+    Schedule.getById(req.session.userId).then((schedule) => {
         res.json(schedule);
     });
 });
