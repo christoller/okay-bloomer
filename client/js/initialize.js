@@ -10,6 +10,5 @@ function renderAppWithSession() {
     getSession().then((session) => {
         renderHeader(session);
         renderSearch();
-        renderSchedule(session);
     });
 }
