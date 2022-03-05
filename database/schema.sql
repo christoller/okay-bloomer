@@ -32,7 +32,11 @@ CREATE TABLE user_plant_schedule (
   id SERIAL PRIMARY KEY,
   user_id integer not null,
   plant_id integer not null,
-  date_added bigint not null,
+  plant_nickname varchar(50),
+  last_watering_date smallint not null,
+  last_fertilising_date smallint not null,
+  last_repotting_date smallint not null,
+  last_pruning_date smallint not null,
   CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
   CONSTRAINT fk_plant FOREIGN KEY(plant_id) REFERENCES plants(id)
 );
