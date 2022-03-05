@@ -23,7 +23,7 @@ function renderSignupForm() {
 
         const usernameField = document.querySelector('input[name=username]');
         const passwordField = document.querySelector('input[name=password]');
-        const emailField = document.querySelector('input[name=username]');
+        const emailField = document.querySelector('input[name=email]');
 
         const body = {
             username: usernameField.value,
