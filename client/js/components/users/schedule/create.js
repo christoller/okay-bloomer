@@ -1,19 +1,21 @@
-function addToSchedule() {
-    // Render Modal Form
-    // Nickname
-    // Sumbit Btn
 
-    // Pull Data from form
+function addPlantToSchedule(plant) {
+    const body = {
+        plant_id: plant.id,
+        plant_nickname: plant.plant_nickname,
+    };
 
-    // Calculate stuff
-    const date = Date.now();
-    const milisecondsInDay = 86400000;
+    axios
+        .post('/api/schedule/', body)
+        .then((response) => {
+            // Is a 2XX response code
+            console.log('success')
+        })
+        .catch((error) => {
+            // Is a greater than 2XX response code. E.g. 422, 500 error
+            // Only runs on Error
+            displayError(error.response.data.message);
+        });
 
-    // insert into a object
-    let body = {};
-    // make post request
-
-    axios.post(`/api/schedule/}`, body).then((response) => {
-        renderSchedule();
-    });
+    console.log(body);
 }

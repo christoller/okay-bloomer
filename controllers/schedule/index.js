@@ -28,7 +28,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    Schedule.create(req.body).then((schedule) => {
+    const data = req.body
+    Schedule.create({...data, user_id: req.session.userId}).then((schedule) => {
         res.json(schedule);
     });
 });
