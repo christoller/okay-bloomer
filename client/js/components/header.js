@@ -1,7 +1,6 @@
 function renderHeader(session = {}) {
     const header = document.querySelector('#header-nav');
     header.innerHTML = `
-        <h1>OK Bloomer</h1>
     `;
     if (session.username) {
         header.innerHTML += `
