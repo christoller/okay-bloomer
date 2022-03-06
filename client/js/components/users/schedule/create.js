@@ -1,4 +1,3 @@
-
 function addPlantToSchedule(plant) {
     const body = {
         plant_id: plant.id,
@@ -9,7 +8,7 @@ function addPlantToSchedule(plant) {
         .post('/api/schedule/', body)
         .then((response) => {
             // Is a 2XX response code
-            console.log('success')
+            console.log('success');
         })
         .catch((error) => {
             // Is a greater than 2XX response code. E.g. 422, 500 error
