@@ -7,7 +7,7 @@ function renderPlant(id) {
         const plant = response.data;
         let plantDiv = document.createElement('div');
         detail.appendChild(plantDiv).innerHTML = `
-            
+            <button id="add-plant-to-schedule">Add to Schedule</button>
             <div><img src="${plant.image_url}" ></img></div>
             <h3>${plant.name}</h3>
             <div>${plant.latin_name}</div>
@@ -20,12 +20,14 @@ function renderPlant(id) {
             <div>${plant.repotting_frequency_in_days}</div>
             <div>${plant.repotting_frequency_in_days}</div>
             <div>${plant.soil_type}</div>
+
             <button id="add-plant-to-favourites">Add to Favourites</button><br>
             <button id="add-plant-to-schedule">Add to Schedule</button>
         `;
         const addPlantToFavouritesButton = document.querySelector(
             '#add-plant-to-favourites'
         );
+
         const addPlantToScheduleButton = document.querySelector(
             '#add-plant-to-schedule'
         );

@@ -2,10 +2,8 @@ function renderSchedule() {
     const resultsContainer = document.createElement('section');
     resultsContainer.innerHTML = '';
     page.innerHTML = ``;
-
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
-        console.log(results);
         results.forEach((result) => {
             const item = document.createElement('div');
 
@@ -20,7 +18,6 @@ function renderSchedule() {
         page.appendChild(resultsContainer);
         document.querySelectorAll('button.refreshTimer').forEach((button) => {
             button.addEventListener('click', (e) => {
-                console.log('ADDING ON CLICK');
                 e.preventDefault();
                 updateSchedule(button.dataset.action, button.dataset.id);
             });
