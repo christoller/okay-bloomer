@@ -20,7 +20,13 @@ function renderPlant(id) {
             <div>${plant.repotting_frequency_in_days}</div>
             <div>${plant.repotting_frequency_in_days}</div>
             <div>${plant.soil_type}</div>
+
+            <button id="add-plant-to-favourites">Add to Favourites</button><br>
+            <button id="add-plant-to-schedule">Add to Schedule</button>
         `;
+        const addPlantToFavouritesButton = document.querySelector(
+            '#add-plant-to-favourites'
+        );
 
         const addPlantToScheduleButton = document.querySelector(
             '#add-plant-to-schedule'
@@ -30,6 +36,12 @@ function renderPlant(id) {
             e.preventDefault();
             console.log(plant);
             addPlantToSchedule(plant);
+        });
+
+        addPlantToFavouritesButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('addPlantToFavouritesButton is working ');
+            addPlantToFavourites(); /// TODO
         });
     });
 }
