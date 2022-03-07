@@ -25,6 +25,10 @@ function renderPlant(id) {
                 <button id="add-plant-to-schedule" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Schedule</button>
             </div>
         `;
+        const addPlantToFavouritesButton = document.querySelector(
+            '#add-plant-to-favourites'
+        );
+
         const addPlantToScheduleButton = document.querySelector(
             '#add-plant-to-schedule'
         );
@@ -33,6 +37,12 @@ function renderPlant(id) {
             e.preventDefault();
             console.log(plant);
             addPlantToSchedule(plant);
+        });
+
+        addPlantToFavouritesButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('addPlantToFavouritesButton is working ');
+            addPlantToFavourites(); /// TODO
         });
     });
 }

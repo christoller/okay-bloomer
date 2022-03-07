@@ -1,7 +1,7 @@
 const db = require('../database/db');
 
 const Schedules = {
-    getById: (id) => {
+    getByUserId: (id) => {
         const query = `SELECT user_plant_schedule.id, name, plant_id, plant_nickname, watering_frequency_in_days, fertilising_frequency_in_days, repotting_frequency_in_days, pruning_frequency_in_days, image_url, last_watering_date, last_fertilising_date, last_repotting_date, last_pruning_date FROM user_plant_schedule INNER JOIN plants ON (user_plant_schedule.plant_id = plants.id)WHERE user_id = ${id}`;
         return db.query(query).then((response) => {
             return response.rows;
@@ -19,9 +19,8 @@ const Schedules = {
         } else if (action === 'repotting') {
             field = 'last_repotting_date';
         }
-        const query =
-            'UPDATE user_plant_schedule set $1 = NOW()::timestamptz WHERE id = $2 AND user_id = $3 RETURNING *';
-        return db.query(query, [field, id, user_id]).then((response) => {
+        const query = `UPDATE user_plant_schedule set ${field} = NOW()::timestamptz WHERE id = $1 AND user_id = $2 RETURNING *`;
+        return db.query(query, [id, user_id]).then((response) => {
             return response.rows && response.rows.length > 0
                 ? response.rows[0]
                 : null;
