@@ -11,6 +11,7 @@ const scheduleController = require('./controllers/schedule');
 const sessionsController = require('./controllers/sessions');
 const usersController = require('./controllers/users');
 const plantsController = require('./controllers/plants');
+const favouritesController = require('./controllers/favourites');
 
 // const errorHandler = require('./middleware/error_handler');
 // const logger = require('./middleware/logger');
@@ -40,6 +41,7 @@ app.use('/api/schedule', scheduleController);
 app.use('/api/sessions', sessionsController);
 app.use('/api/users', usersController);
 app.use('/api/plants', plantsController);
+app.use('/api/favourites', favouritesController);
 
 // app.use('/api/')
 

@@ -24,8 +24,7 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username varchar(30) not null unique,
   password varchar(255) not null,
-  email varchar(255) not null unique,
-  favourite_plants integer array DEFAULT '{}' not null
+  email varchar(255) not null unique
 );
 
 CREATE TABLE user_plant_schedule (
@@ -39,4 +38,12 @@ CREATE TABLE user_plant_schedule (
   last_pruning_date timestamptz not null,
   CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
   CONSTRAINT fk_plant FOREIGN KEY(plant_id) REFERENCES plants(id)
+);
+
+CREATE TABLE user_plant_favourites (
+  id SERIAL PRIMARY KEY,
+  user_id integer not null,
+  plant_id integer not null,
+  CONSTRAINT fk_plant FOREIGN KEY(plant_id) REFERENCES plants(id),
+  CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id)
 );
