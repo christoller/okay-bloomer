@@ -13,8 +13,9 @@ const usersController = require('./controllers/users');
 const plantsController = require('./controllers/plants');
 const favouritesController = require('./controllers/favourites');
 
-// const errorHandler = require('./middleware/error_handler');
-// const logger = require('./middleware/logger');
+const errorHandler = require('./middleware/error_handler');
+const logger = require('./middleware/logger');
+//const isLoggedIn = require('./middleware/is_logged_in'); to discuss with team, put in appropriate routes
 
 // const pg = require('pg');
 
@@ -33,9 +34,10 @@ app.use(
     })
 );
 
-// app.use(logger);
-app.use(express.json());
+// app.use(isLoggedIn); to discuss with team, put in appropriate routes
 app.use(express.static('client'));
+app.use(logger);
+app.use(express.json());
 
 app.use('/api/schedule', scheduleController);
 app.use('/api/sessions', sessionsController);
@@ -45,7 +47,7 @@ app.use('/api/favourites', favouritesController);
 
 // app.use('/api/')
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`server listening on port: ${port}`);

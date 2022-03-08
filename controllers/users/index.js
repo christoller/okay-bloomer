@@ -1,4 +1,5 @@
 const express = require('express');
+const isLoggedIn = require('../../middleware/is_logged_in');
 const Users = require('../../models/users');
 const userCreateValidator = require('./create_user_validator');
 const bcrypt = require('bcrypt');
