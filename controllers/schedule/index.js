@@ -2,111 +2,90 @@ const express = require('express');
 const Schedule = require('../../models/schedule');
 const router = express.Router();
 const moment = require('moment');
+const req = require('express/lib/request');
+
+const scheduleHander = (
+    name,
+    nickname,
+    actionType,
+    lastActionDate,
+    actionFrequency,
+    id
+) => {
+    let plantName = nickname ? nickname : name;
+    let scheduleEvent = { plantName, actionType, id };
+    let requiringActionDate = moment(lastActionDate).add(
+        actionFrequency,
+        'days'
+    );
+    if (actionFrequency === 0) {
+        neverToDo.push(scheduleEvent);
+    } else if (requiringActionDate.isBefore(moment())) {
+        dayToDo.push(scheduleEvent);
+    } else if (requiringActionDate.isBefore(moment().add(7, 'days'))) {
+        weekToDo.push(scheduleEvent);
+    } else if (requiringActionDate.isBefore(moment().add(28, 'days')))
+        monthToDo.push(scheduleEvent);
+    else {
+        longerToDo.push(scheduleEvent);
+    }
+};
 
 router.get('/', (req, res) => {
     Schedule.getByUserId(req.session.userId).then((schedule) => {
-        let results = [];
-        let lastDayOfMonth = moment().endOf('month');
+        // results = {
+        //     day: [],
+        //     week: [],
+        //     month: [],
+        //     longer: [],
+        //     never: []
+        // }
+        dayToDo = [];
+        weekToDo = [];
+        monthToDo = [];
+        longerToDo = [];
+        neverToDo = [];
+        // let lastDayOfMonth = moment().endOf('month');
         for (const row of schedule) {
-            // console.log(row);
-            let nextWateringDate = moment(row.last_watering_date);
-            // let shoe = 0;
-            let resultsToReturn = 1;
-            while (
-                resultsToReturn < 2 &&
-                row.watering_frequency_in_days != 0 &&
-                nextWateringDate.isSameOrBefore(lastDayOfMonth, 'day')
-            ) {
-                nextWateringDate = nextWateringDate.add(
-                    row.watering_frequency_in_days,
-                    'days'
-                );
-                // OLD IMPLEMENTATION USING NICKNAME
-                // let result = {
-                //     id: row.id,
-                //     plant: { id: row.plant_id, nickname: row.plant_nickname },
-                //     dueDate: nextWateringDate.toISOString(),
-                //     action: 'watering',
-                // };
-                // TEMPORARY CODE USING PLANT NAME
-                // if (row.plant_nickname !== null) {
-                // }
-                let result = {
-                    id: row.id,
-                    plant: { id: row.plant_id, nickname: row.name },
-                    dueDate: nextWateringDate.toISOString(),
-                    action: 'watering',
-                };
-                // console.log(
-                //     `${result.id} ${result.nickname} ${result.dueDate}`
-                // );
-                results.push(result);
-                resultsToReturn++;
-            }
-            // console.log(
-            //     results.filter(
-            //         (result) => result.id === 12 && result.action === 'watering'
-            //     )
-            // );
-            let nextRepottingDate = moment(row.last_repotting_date);
-            while (
-                row.repotting_frequency_in_days != 0 &&
-                nextRepottingDate.isSameOrBefore(lastDayOfMonth, 'day')
-            ) {
-                nextRepottingDate = nextRepottingDate.add(
-                    row.repotting_frequency_in_days,
-                    'days'
-                );
-                let result = {
-                    id: row.id,
-                    plant: { id: row.plant_id, nickname: row.name },
-                    dueDate: nextRepottingDate.toISOString(),
-                    action: 'repotting',
-                };
-                results.push(result);
-            }
-
-            let nextFertilisingDate = moment(row.last_fertilising_date);
-            while (
-                row.fertilising_frequency_in_days != 0 &&
-                nextFertilisingDate.isSameOrBefore(lastDayOfMonth, 'day')
-            ) {
-                nextFertilisingDate = nextFertilisingDate.add(
-                    row.fertilising_frequency_in_days,
-                    'days'
-                );
-                let result = {
-                    id: row.id,
-                    plant: { id: row.plant_id, nickname: row.name },
-                    dueDate: nextFertilisingDate.toISOString(),
-                    action: 'fertilising',
-                };
-                results.push(result);
-            }
-
-            let nextPruningDate = moment(row.last_pruning_date);
-            while (
-                row.pruning_frequency_in_days != 0 &&
-                nextPruningDate.isSameOrBefore(lastDayOfMonth, 'day')
-            ) {
-                nextPruningDate = nextPruningDate.add(
-                    row.pruning_frequency_in_days,
-                    'days'
-                );
-                let result = {
-                    id: row.id,
-                    plant: { id: row.plant_id, nickname: row.name },
-                    dueDate: nextPruningDate.toISOString(),
-                    action: 'pruning',
-                };
-                results.push(result);
-            }
+            scheduleHander(
+                row.name,
+                row.plant_nickname,
+                'watering',
+                row.last_watering_date,
+                row.watering_frequency_in_days,
+                row.id
+            );
+            scheduleHander(
+                row.name,
+                row.plant_nickname,
+                'fertilising',
+                row.last_fertilising_date,
+                row.fertilising_frequency_in_days,
+                row.id
+            );
+            scheduleHander(
+                row.name,
+                row.plant_nickname,
+                'repotting',
+                row.last_repotting_date,
+                row.repotting_frequency_in_days,
+                row.id
+            );
+            scheduleHander(
+                row.name,
+                row.plant_nickname,
+                'pruning',
+                row.last_pruning_date,
+                row.pruning_frequency_in_days,
+                row.id
+            );
         }
-        results.sort((a, b) => {
-            const dueDateA = moment(a.dueDate);
-            const dueDateB = moment(b.dueDate);
-            return dueDateA.unix() - dueDateB.unix();
-        });
+        results = [dayToDo, weekToDo, monthToDo, longerToDo, neverToDo];
+        console.log(results[0]);
+        console.log(results[1]);
+        console.log(results[2]);
+        console.log(results[3]);
+        console.log(results[4]);
         res.json(results);
     });
 });
