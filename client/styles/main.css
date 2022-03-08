@@ -650,6 +650,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.5rem;
 }
 
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .bg-green-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity));
@@ -673,6 +681,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+.bg-lime-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 252 203 / var(--tw-bg-opacity));
+}
+
+.bg-green-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
 }
 
 .p-8 {
