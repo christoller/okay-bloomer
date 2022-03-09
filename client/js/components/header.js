@@ -4,6 +4,7 @@ function renderHeader(session = {}) {
     `;
     if (session.username) {
         header.innerHTML += `
+
         <ul id="navlist" class="flex m-auto justify-center ">
             <li class="px-8 hover:animate-bounce">Welcome, ${session.username}</li>
             <li class="hidden md:contents">|</li>
@@ -16,6 +17,7 @@ function renderHeader(session = {}) {
             <li onClick="" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110"">Create plant listing (TODO)</li>
             <li class="hidden md:contents">|</li>
             <li onClick="logout()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110"">Logout</li>
+
         </ul>
         `;
     } else {

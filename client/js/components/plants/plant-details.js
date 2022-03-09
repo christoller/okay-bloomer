@@ -57,6 +57,7 @@ function renderPlant(id) {
                 </div>
                 <div>${plant.description}</div>
                 <button id="add-plant-to-schedule" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Schedule</button>
+                <button id="add-plant-to-favourites" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Favourites</button>
             </div>
         `;
         const addPlantToFavouritesButton = document.querySelector(
@@ -67,16 +68,14 @@ function renderPlant(id) {
             '#add-plant-to-schedule'
         );
 
-        addPlantToScheduleButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log(plant);
-            addPlantToSchedule(plant);
-        });
-
         addPlantToFavouritesButton.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('addPlantToFavouritesButton is working ');
-            addPlantToFavourites(); /// TODO
+            addPlantToFavourites(plant);
+        });
+
+        addPlantToScheduleButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            addPlantToSchedule(plant);
         });
     });
 }

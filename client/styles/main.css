@@ -510,10 +510,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.625rem;
 }
 
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
 
 .mt-1 {
   margin-top: 0.25rem;
@@ -547,6 +549,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: flex;
 }
 
+
 .contents {
   display: contents;
 }
@@ -554,6 +557,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hidden {
   display: none;
 }
+
 
 .h-auto {
   height: auto;
@@ -631,9 +635,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 0.25rem;
 }
 
+
 .overflow-hidden {
   overflow: hidden;
 }
+
+.rounded-xl {
+  border-radius: 0.75rem;
 
 .rounded-xl {
   border-radius: 0.75rem;
@@ -641,11 +649,19 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-2xl {
   border-radius: 1rem;
+
 }
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
 
 .rounded-full {
   border-radius: 9999px;
 }
+
+
 
 .rounded-lg {
   border-radius: 0.5rem;
@@ -663,8 +679,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(163 163 163 / 0.5);
 }
 
+
 .bg-green-200\/75 {
   background-color: rgb(187 247 208 / 0.75);
+
+.bg-green-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+
 }
 
 .bg-green-50 {
@@ -680,6 +702,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-green-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(20 83 45 / var(--tw-bg-opacity));
+
 }
 
 .bg-contain {
@@ -688,6 +711,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-center {
   background-position: center;
+
 }
 
 .p-8 {
@@ -772,6 +796,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+
 .bg-blend-overlay {
   background-blend-mode: overlay;
 }
@@ -790,6 +815,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .duration-200 {
   transition-duration: 200ms;
+
 }
 
 .duration-300 {
@@ -805,6 +831,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
 
 @-webkit-keyframes spin {
   to {
@@ -840,6 +867,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:animate-ping:hover {
   -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
           animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 @-webkit-keyframes pulse {
@@ -847,6 +883,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     opacity: .5;
   }
 }
+
 
 @keyframes pulse {
   50% {
@@ -906,10 +943,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(22 101 52 / var(--tw-text-opacity));
 }
 
+
 .hover\:text-green-600:hover {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
 }
+
 
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
@@ -925,6 +964,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 50%;
   }
 }
+
 
 @media (min-width: 1024px) {
   .lg\:mt-8 {
