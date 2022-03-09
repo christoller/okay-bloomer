@@ -9,6 +9,16 @@ function addPlantToSchedule(plant) {
         .then((response) => {
             // Is a 2XX response code
             console.log('success');
+            renderSchedule();
+            const plantAddedNotification = document.createElement('div');
+            plantAddedNotification.style =
+                'background-color: rgb(20,83,45); width:100%; height:100%';
+
+            plantAddedNotification.innerHTML = `
+            <p class="text-center text-white my-4">${plant.name} added to schedule</p>
+            `;
+
+            page.appendChild(plantAddedNotification);
         })
         .catch((error) => {
             // Is a greater than 2XX response code. E.g. 422, 500 error

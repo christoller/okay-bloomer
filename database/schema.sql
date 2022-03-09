@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS user_plant_schedule;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS plants;
 
+
 CREATE TYPE sunlight_types AS ENUM ('full sun', 'partial', 'full shade'); 
 CREATE TYPE location_types AS ENUM ('outdoor', 'indoor', 'both');
 
