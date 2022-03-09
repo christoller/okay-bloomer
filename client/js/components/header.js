@@ -10,9 +10,9 @@ function renderHeader(session = {}) {
             <li class="hidden md:contents">|</li>
             <li onClick="renderSearch()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Homepage</li>
             <li class="hidden md:contents">|</li>
-            <li onClick="renderSchedule()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" >View your schedule</li>
+            <li onClick="renderSchedule()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" >View schedule</li>
             <li class="hidden md:contents">|</li>
-            <li onClick="renderPlantFavourites()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110"">View your favourites</li>
+            <li onClick="renderPlantFavourites()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110"">View favourites</li>
             <li class="hidden md:contents">|</li>
             <li onClick="" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110"">Create plant listing (TODO)</li>
             <li class="hidden md:contents">|</li>
