@@ -6,7 +6,16 @@ Staying on top of the different needs of each of your plant babies is hard work;
 This app helps users create their plant care schedule. Users can fetch info from our plants database and create a schedule that is accessed in-app.
 
 # Take a look:
+https://okay-bloomer.herokuapp.com/
 
+# Tech Used:
+- HTML
+- CSS
+- Javascript
+- Node.js
+- Postgres
+- Tailwindcss
+- Heroku
 
 # User Stories
 - As a user, I want to look up different plant types so that I know how to care for my plants

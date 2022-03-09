@@ -17,8 +17,8 @@ function renderHeader(session = {}) {
         header.innerHTML += `
         <ul id="navlist" class="flex m-auto justify-center">
             <li onClick="renderSearch()" class="px-8">Homepage</li>
-            <li onClick="renderSignupForm()">Sign up</li>
-            <li onClick="renderLoginForm()">Login</li>
+            <li onClick="renderSignupForm()" class="px-8">Sign up</li>
+            <li onClick="renderLoginForm()" class="px-8">Login</li>
         </ul>
         `;
     }

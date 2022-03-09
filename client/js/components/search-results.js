@@ -33,3 +33,11 @@ function renderSearchResults(searchQuery) {
         page.appendChild(resultsContainer);
     });
 }
+
+{
+    /* <button
+    type='submit'
+    class='mb-4 lg:mb-0 mt-4 px-8 py-0.5 bg-green-900 text-white rounded-full hover:bg-green-600 ease-in duration-300 hover:scale-110'>
+    Submit
+</button>; */
+}
