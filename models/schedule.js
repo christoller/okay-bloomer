@@ -8,18 +8,48 @@ const Schedules = {
         });
     },
 
-    update: ({ action, id, user_id }) => {
+    update({ action, id, user_id, newName }) {
         let field = '';
-        if (action === 'watering') {
-            field = 'last_watering_date';
-        } else if (action === 'fertilising') {
-            field = 'last_fertilising_date';
-        } else if (action === 'pruning') {
-            field = 'last_pruning_date';
-        } else if (action === 'repotting') {
-            field = 'last_repotting_date';
+        let query = '';
+        if (newName) {
+            query = `UPDATE user_plant_schedule set plant_nickname = '${newName}' WHERE id = $1 AND user_id = $2 RETURNING *`;
+        } else {
+            switch (action) {
+                case 'watering':
+                    field = 'last_watering_date';
+                    break;
+                case 'fertilising':
+                    field = 'last_fertilising_date';
+                    break;
+                case 'pruning':
+                    field = 'last_pruning_date';
+                    break;
+                case 'repotting':
+                    field = 'last_repotting_date';
+                    break;
+                default:
+                    throw new Error('Invalid field input');
+            }
+            query = `UPDATE user_plant_schedule set ${field} = NOW()::timestamptz WHERE id = $1 AND user_id = $2 RETURNING *`;
+            // if (action === 'watering') {
+            //     field = 'last_watering_date';
+            // } else if (action === 'fertilising') {
+            //     field = 'last_fertilising_date';
+            // } else if (action === 'pruning') {
+            //     field = 'last_pruning_date';
+            // } else if (action === 'repotting') {
+            //     field = 'last_repotting_date';
+            // }
         }
-        const query = `UPDATE user_plant_schedule set ${field} = NOW()::timestamptz WHERE id = $1 AND user_id = $2 RETURNING *`;
+        // else if (action === 'rename') {
+        //     const query = `UPDATE user_plant_schedule set plant_nickname = '${newName}' WHERE id = $1 AND user_id = $2 RETURNING *`;
+        //     return db.query(query, [id, user_id]).then((response) => {
+        //         return response.rows && response.rows.length > 0
+        //             ? response.rows[0]
+        //             : null;
+        //     });
+        // }
+
         return db.query(query, [id, user_id]).then((response) => {
             return response.rows && response.rows.length > 0
                 ? response.rows[0]
