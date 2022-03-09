@@ -8,7 +8,7 @@ function renderHeader(session = {}) {
             <li class="px-8">Welcome, ${session.username}</li>
             <li onClick="renderSearch()" class="px-8">Homepage</li>
             <li onClick="renderSchedule()" class="px-8">View your schedule</li>
-            <li onClick="viewPlantFavourites()" class="px-8">View your favourites</li>
+            <li onClick="renderPlantFavourites()" class="px-8">View your favourites</li>
             <li onClick="" class="px-8">Create plant listing (TODO)</li>
             <li onClick="logout()" class="px-8">Logout</li>
         </ul>

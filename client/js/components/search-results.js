@@ -23,9 +23,7 @@ function renderSearchResults(searchQuery) {
                             <p class="italic">Latin name: ${result.latin_name}</p>
                             <div class="w-full h-px bg-black my-1"></div>
                             <p> ${result.description}</p>
-
-                            <a href="#####" class='mb-4 lg:mb-0 mt-4 px-8 py-0.5 bg-green-900 text-white rounded-full hover:bg-green-600 ease-in duration-300 hover:scale-105'>Learn more about ${result.name} here</a>
-
+                            <button onClick="renderPlant(id)" class=" text-green-900 hover:text-green-600 ease-in duration-200 mt-1">Learn more about ${result.name} here</button>
                         </div>
                     </div>
                 </div>

@@ -21,9 +21,9 @@ router.post('/', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/', (req, res) => {
     Plants.delete(req.params.id).then(() =>
-        res.json({ status: 'blooming good' })
+        res.json({ status: 'Blooming good delete' })
     );
 });
 
