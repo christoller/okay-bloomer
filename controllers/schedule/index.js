@@ -19,33 +19,27 @@ const scheduleHander = (
         'days'
     );
     if (actionFrequency === 0) {
-        neverToDo.push(scheduleEvent);
+        results.never.push(scheduleEvent);
     } else if (requiringActionDate.isBefore(moment())) {
-        dayToDo.push(scheduleEvent);
+        results.day.push(scheduleEvent);
     } else if (requiringActionDate.isBefore(moment().add(7, 'days'))) {
-        weekToDo.push(scheduleEvent);
+        results.week.push(scheduleEvent);
     } else if (requiringActionDate.isBefore(moment().add(28, 'days')))
-        monthToDo.push(scheduleEvent);
+        results.month.push(scheduleEvent);
     else {
-        longerToDo.push(scheduleEvent);
+        results.longer.push(scheduleEvent);
     }
 };
 
 router.get('/', (req, res) => {
     Schedule.getByUserId(req.session.userId).then((schedule) => {
-        // results = {
-        //     day: [],
-        //     week: [],
-        //     month: [],
-        //     longer: [],
-        //     never: []
-        // }
-        dayToDo = [];
-        weekToDo = [];
-        monthToDo = [];
-        longerToDo = [];
-        neverToDo = [];
-        // let lastDayOfMonth = moment().endOf('month');
+        results = {
+            day: [],
+            week: [],
+            month: [],
+            longer: [],
+            never: [],
+        };
         for (const row of schedule) {
             scheduleHander(
                 row.name,
@@ -80,12 +74,6 @@ router.get('/', (req, res) => {
                 row.id
             );
         }
-        results = [dayToDo, weekToDo, monthToDo, longerToDo, neverToDo];
-        console.log(results[0]);
-        console.log(results[1]);
-        console.log(results[2]);
-        console.log(results[3]);
-        console.log(results[4]);
         res.json(results);
     });
 });
@@ -96,9 +84,13 @@ router.patch('/:id', (req, res) => {
         ...data,
         id: req.params.id,
         user_id: req.session.userId,
-    }).then((schedule) => {
-        res.json(schedule);
-    });
+    })
+        .then((schedule) => {
+            res.json(schedule);
+        })
+        .catch(function (error) {
+            res.json(error);
+        });
 });
 
 router.post('/', (req, res) => {

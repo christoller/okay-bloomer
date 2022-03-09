@@ -1,12 +1,13 @@
-function updateSchedule(action, id) {
+function updateSchedule(action, id, name) {
     const body = {
         action: action,
+        newName: name,
     };
 
     axios
         .patch(`/api/schedule/${id}`, body)
         .then((response) => {
-            console.log('AXIOS .PATCH IS HAPPENING!');
+            renderSchedule();
         })
         .catch((error) => {
             displayError(error.response.data.message);
