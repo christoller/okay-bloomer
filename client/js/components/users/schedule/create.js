@@ -8,7 +8,6 @@ function addPlantToSchedule(plant) {
         .post('/api/schedule/', body)
         .then((response) => {
             // Is a 2XX response code
-            console.log('success');
             renderSchedule();
             const plantAddedNotification = document.createElement('div');
             plantAddedNotification.style =
@@ -19,6 +18,7 @@ function addPlantToSchedule(plant) {
             `;
 
             page.appendChild(plantAddedNotification);
+            console.log('Success');
         })
         .catch((error) => {
             // Is a greater than 2XX response code. E.g. 422, 500 error
