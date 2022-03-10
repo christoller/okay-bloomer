@@ -24,8 +24,10 @@ function renderHeader(session = {}) {
         header.innerHTML += `
         <ul id="navlist" class="flex m-auto justify-center">
             <li onClick="renderSearch()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Homepage</li>
-            <li onClick="renderSignupForm() class="cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Sign up</li>
-            <li onClick="renderLoginForm()" class="cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Login</li>
+            <li class="hidden md:contents">|</li>
+            <li onClick="renderSignupForm()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Sign up</li>
+            <li class="hidden md:contents">|</li>
+            <li onClick="renderLoginForm()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Login</li>
         </ul>
         `;
     }
