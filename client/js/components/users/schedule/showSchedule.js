@@ -14,7 +14,7 @@ function renderSchedule() {
                         <img src="https://images.unsplash.com/photo-1570778003102-2036f73c5e60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" width='400px' height='auto' class="rounded-xl"/>
                     </div>
                     <p class="w-1/3 mx-auto mt-2 font-bold">
-                        Nothing added to your schedule. Go to the homepage and use the search function to find plants and add to schedule to keep track of maintainence for your plants.
+                        Theres nothing in your schedule! Go to the homepage and use the search function to find plants and add to schedule to keep track of maintainence for your plants.
                     </p>
                 </div>`;
             page.appendChild(emptySchedule);
