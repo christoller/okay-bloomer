@@ -26,10 +26,11 @@ function renderSchedule() {
         let resultID = '';
         const modalBox = document.createElement('div');
         modalBox.innerHTML = `
-                    <div class="modal-content">
-                        <span class="close-btn">&times;</span>
+                    
+                    <div class="modal-content w-60 flex justify-center flex-col content-center">
+                    <span class="close-btn flex justify-end cursor-pointer">&times;</span>
                         <p>Enter new nickname</p>
-                        <input type="text" placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
+                        <input type="text" class="w-1/2 mx-auto my-8  rounded "placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
                         <button class="changeNickname" data-id="${resultID}" data-action="rename" data-inputfield="${resultID}-week">Change</button>
                     </div>
                     `;
@@ -52,34 +53,101 @@ function renderSchedule() {
         dayContainer.classList.add('timeContainer');
         weekContainer.classList.add('timeContainer');
         monthContainer.classList.add('timeContainer');
-        dayContainer.innerHTML = '<h1>To Do Today!</h1>';
-        weekContainer.innerHTML = '<h1>To Do This week!</h1>';
-        monthContainer.innerHTML = '<h1>To Do This Month!</h1>';
+        dayContainer.innerHTML =
+            '<h1 class="text-center font-bold mt-12">To Do Today!</h1>';
+        weekContainer.innerHTML =
+            '<h1 class="text-center font-bold mt-8">To Do This week!</h1>';
+        monthContainer.innerHTML =
+            '<h1 class="text-center font-bold mt-8">To Do This Month!</h1>';
         dayContainer.setAttribute('id', 'dayContainer');
         weekContainer.setAttribute('id', 'weekContainer');
         monthContainer.setAttribute('id', 'monthContainer');
+
+        if (results.day.length == 0) {
+            const emptyTimeframeContainer = document.createElement('div');
+            emptyTimeframeContainer.innerHTML = `
+            <div class="flex flex-nowrap  
+                            w-2/3 py-8 px-6 
+                            mx-auto my-3 justify-center 
+                            bg-green-50 shadow-2xl
+                            rounded-xl
+                            shadow-black-500/40"">
+                            <p> Nothing to attend to today!</p>
+                        </div>
+            `;
+            dayContainer.appendChild(emptyTimeframeContainer);
+        }
+        if (results.week.length == 0) {
+            const emptyTimeframeContainer = document.createElement('div');
+            emptyTimeframeContainer.innerHTML = `
+            <div class="flex flex-nowrap  
+                            w-2/3 py-8 px-6 
+                            mx-auto my-3 justify-center 
+                            bg-green-50 shadow-2xl
+                            rounded-xl
+                            shadow-black-500/40"">
+                            <p> Nothing to attend to this week!</p>
+                        </div>
+            `;
+            weekContainer.appendChild(emptyTimeframeContainer);
+        }
+        if (results.month.length == 0) {
+            const emptyTimeframeContainer = document.createElement('div');
+            emptyTimeframeContainer.innerHTML = `
+            <div class="flex flex-nowrap
+                            w-2/3 py-8 px-6 
+                            mx-auto my-3 justify-center 
+                            bg-green-50 shadow-2xl
+                            rounded-xl
+                            shadow-black-500/40"">
+                            <p> Nothing to attend to this month!</p>
+                        </div>
+            `;
+            monthContainer.appendChild(emptyTimeframeContainer);
+        }
+
         results.day.forEach((result) => {
             const item = document.createElement('div');
             resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
-                        <p> ${result.plantName} needs ${result.actionType}</p>
-                        <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                        
-                        <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week>Change plant name</button>
+                        <div class="item-container flex flex-nowrap  
+                            w-2/3 py-8 px-6 
+                            mx-auto my-3 justify-center 
+                            bg-green-50 shadow-2xl
+                            rounded-xl
+                            shadow-black-500/40"">
+                            <p> ${result.plantName} needs ${result.actionType}</p>
+                            <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
+                            
+                            <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week>Change plant name</button>
+                        </div>
                 `;
             dayContainer.appendChild(item);
         });
         page.appendChild(dayContainer);
+
         results.week.forEach((result) => {
             const item = document.createElement('div');
             resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
-                        <p> ${result.plantName} needs ${result.actionType}</p>
-                        <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                        <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                        <div class="item-container
+                            w-2/3 py-8 px-6 
+                            mx-auto my-3
+                            bg-green-50 shadow-2xl
+                            rounded-xl
+                            shadow-black-500/40"">
+                            <div class="item-text">
+                                <p class=" text-center"> ${result.plantName} needs ${result.actionType}</p>
+                            </div>
+                            <div class="item-schedule-btns">
+                                <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
+                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                            </div>
+                        </div>
                 `;
+
             weekContainer.appendChild(item);
         });
         page.appendChild(weekContainer);
@@ -88,8 +156,15 @@ function renderSchedule() {
             resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
-                        <p> ${result.plantName} needs ${result.actionType}</p>
-                        <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                        <div class="item-container flex flex-nowrap  
+                            w-2/3 py-8 px-6 
+                            mx-auto my-3 justify-center 
+                            bg-green-50 shadow-2xl
+                            rounded-xl
+                            shadow-black-500/40">
+                            <p> ${result.plantName} needs ${result.actionType}</p>
+                            <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                        </div>
                 `;
             monthContainer.appendChild(item);
         });

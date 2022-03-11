@@ -37,10 +37,11 @@
 
 .modal-content {
     position: relative;
+    text-align: center;
     background-color: white;
     padding: 20px;
     margin: auto;
-    width: 75%;
+    width: 30%;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -80,4 +81,23 @@
         top: 0;
         opacity: 1
     }
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.item-text {
+     flex-grow: 2;
+     padding-left: 15%;
+}
+
+.item-schedule-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
