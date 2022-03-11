@@ -119,9 +119,10 @@ function renderSchedule() {
                             rounded-xl
                             shadow-black-500/40"">
                             <p> ${result.plantName} needs ${result.actionType}</p>
-                            <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                            
-                            <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week>Change plant name</button>
+                            <div class="item-schedule-btns">
+                                <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
+                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                            </div>
                         </div>
                 `;
             dayContainer.appendChild(item);
