@@ -12,10 +12,10 @@ function renderPlantFavourites() {
             emptyFavourites.innerHTML = `
                 <div class="text-center mt-12 mx-auto">
                     <div class="flex justify-center">
-                        <img src="https://images.unsplash.com/photo-1550983552-d9031a050568?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" width='400px' height='auto' class="rounded-xl"/>
+                        <img src="https://images.unsplash.com/photo-1550983552-d9031a050568?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" width='200px' height='auto' class="rounded-xl"/>
                     </div>
                     <p class="w-1/3 mx-auto mt-2 font-bold">
-                        You don't have any favourite plants! Go to the homepage and use the search function to find plants and add to favourites to keep track of maintainence for your plants.
+                        You don't have any favourite plants! Head to the 'Search plants' page and add to favourites to keep track of your favourite plants.
                     </p>
                 </div>`;
             page.appendChild(emptyFavourites);
@@ -25,12 +25,22 @@ function renderPlantFavourites() {
                 const item = document.createElement('div');
 
                 item.innerHTML = `
-                <div id="favourites-container" class="flex flex-row gap-4 ">  
-                    <div class="favourites-result" class="bg-green-50 rounded-lg w-9/12 mt-6 mx-auto mb-9 flex flex-wrap gap-6 p-8 shadow-lg shadow-black-500/40">
-                        <h3 class="text-2xl"> ${result.name} </h3>   
-                        <p> ${result.description} </p> 
-                        <button id="delete" data-favourite_id="${result.favourite_id}"class="delete-favourite text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Remove ${result.name} from favourites</button>
+                <div id="favourites-result" class="
+                w-2/3 py-8 px-6 
+                mx-auto my-3 justify-center 
+                bg-green-50 shadow-2xl
+                rounded-xl
+                shadow-black-500/40">
+                    <div id="favourites-container" class="flex gap-4" >  
+                        <img src="${result.image_url}" class="rounded-2xl h-auto w-52 cursor-pointer "/>
+                        <div class="justify-center">
+                            <h3 class="text-2xl"> ${result.name} </h3><br>
+                            <p > ${result.description} <a onClick="renderPlant(${result.id})"class=" text-green-900 hover:text-green-600 ease-in duration-200 mt-1 cursor-pointer font-bold" >Learn more.</a></p><br>
+
+                            <button id="delete" data-favourite_id="${result.favourite_id}"class="delete-favourite text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Remove ${result.name} from favourites</button>
+                        </div>
                     </div>
+                </div>
             `;
                 resultsContainer.appendChild(item);
                 page.appendChild(resultsContainer);
