@@ -5,8 +5,8 @@ function renderHeader(session = {}) {
     if (session.username) {
         header.innerHTML += `
 
-        <ul id="navlist" class="flex m-auto justify-center ">
-            <li class="px-8 hover:animate-bounce">Welcome, ${session.username}</li>
+        <ul id="navlist" class="flex m-auto justify-center text-lg">
+            <li class="px-8 ease-in duration-500 hover:scale-125 ">Welcome, ${session.username}</li>
             <li class="hidden md:contents">|</li>
             <li onClick="renderSearch()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Search plants</li>
             <li class="hidden md:contents">|</li>

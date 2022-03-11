@@ -9,6 +9,7 @@ module.exports = {
         fontFamily: {
             body: ['IBM Plex Serif', 'serif'],
             title: ['Alfa Slab One', 'cursive'],
+            type: ['Noto Sans Display', 'sans-serif'],
         },
         extend: {},
     },

@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-image: url(https://images.unsplash.com/photo-1599334064100-4d3a0cc7332c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.background-overlay {
+    background-color: rgba(240, 253, 244, 0.9);
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+.search-container {
+    background-color: rgba(240, 253, 244, 0.9);
+}
+
 .loader {
     border: 16px solid #f3f3f3;
     /* Light grey */
@@ -37,10 +54,11 @@
 
 .modal-content {
     position: relative;
+    text-align: center;
     background-color: white;
     padding: 20px;
     margin: auto;
-    width: 75%;
+    width: 30%;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -80,4 +98,23 @@
         top: 0;
         opacity: 1
     }
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.item-text {
+     flex-grow: 2;
+     padding-left: 15%;
+}
+
+.item-schedule-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
