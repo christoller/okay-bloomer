@@ -56,8 +56,10 @@ function renderPlant(id) {
                 <div><span class="font-bold">Soil Type:</span> ${soilType}</div>
                 </div>
                 <div>${plant.description}</div>
+                
                 <button id="add-plant-to-schedule" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Schedule</button>
                 <button id="add-plant-to-favourites" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Favourites</button>
+                <div class='pt-2 text-red-600 plant-error'></div>
             </div>
         `;
         const addPlantToFavouritesButton = document.querySelector(
