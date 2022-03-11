@@ -12,6 +12,7 @@ function renderSignupForm() {
                 <p class="font-bold my-2">Email:</p>
                 <input type="text" name="email" class="border-2 border-neutral-400/50 rounded"/>
                 <br/>
+                <p class="error-location text-red-600 mt-1"></p>
                 <button type="submit" class="mb-4 lg:mb-0 mt-4 px-8 py-0.5 bg-green-900 text-white rounded-full hover:bg-green-600 ease-in duration-300 hover:scale-110">Submit</button>
             </form>
         </div>

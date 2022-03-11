@@ -2,6 +2,24 @@ function renderSchedule() {
     page.innerHTML = ``;
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
+        if (
+            results.day.length == 0 &&
+            results.week.length == 0 &&
+            results.month.length == 0
+        ) {
+            const emptySchedule = document.createElement('div');
+            emptySchedule.innerHTML = `
+                <div class="text-center mt-12 mx-auto">
+                    <div class="flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1570778003102-2036f73c5e60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" width='400px' height='auto' class="rounded-xl"/>
+                    </div>
+                    <p class="w-1/3 mx-auto mt-2 font-bold">
+                        Theres nothing in your schedule! Go to the homepage and use the search function to find plants and add to schedule to keep track of maintainence for your plants.
+                    </p>
+                </div>`;
+            page.appendChild(emptySchedule);
+        }
+
         const dayContainer = document.createElement('div');
         const weekContainer = document.createElement('div');
         const monthContainer = document.createElement('div');

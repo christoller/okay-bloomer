@@ -1,5 +1,5 @@
 function displayError(errorText) {
-    const page = document.getElementById('page');
+    const page = document.querySelector('.error-location');
     const error = document.createElement('p');
     error.innerText = errorText;
     error.classList.add('error');
