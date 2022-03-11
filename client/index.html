@@ -34,19 +34,20 @@
     </head>
 
     <body
-        class="min-h-screen bg-green-200/75 bg-blend-overlay bg-center bg-contain font-body"
+        class="min-h-screen bg-green-200/75 bg-blend-overlay bg-center bg-contain font-body flex flex-col h-screen overflow-hidden"
     >
         <h1 class="flex m-auto text-5xl justify-center py-8 font-title">
             OK🌱BLOOMER
         </h1>
         <nav id="header-nav"></nav>
 
-        <section id="page"></section>
-        <footer
-            id="footer-nav"
-            class="flex justify-center fixed inset-x-0 bottom-0"
-        >
-            🌱 Created by Marc, Chris, Rob & Kayta, 2022
+        <section id="page" class="flex-1 overflow-y-scroll"></section>
+        <footer id="footer-nav" class="w-full text-center pb-2">
+            <a
+                href="https://github.com/christoller/okay-bloomer"
+                class="text-green-900 hover:text-green-600 ease-in duration-200 mt-1 cursor-pointer font-bold"
+                >🌱 Created by Marc, Chris, Rob & Kayta, 2022
+            </a>
         </footer>
     </body>
 </html>
