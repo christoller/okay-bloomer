@@ -5,10 +5,6 @@ const userCreateValidator = async (req, res, next) => {
     const password = req.body.password;
     const email = req.body.email;
     const allowedFields = ['username', 'password', 'email'];
-    console.log(Object.keys(req.body));
-    console.log(
-        Object.keys(req.body).filter((field) => !allowedFields.includes(field))
-    );
     if (
         Object.keys(req.body).filter((field) => !allowedFields.includes(field))
             .length >= 1
@@ -69,16 +65,6 @@ const userCreateValidator = async (req, res, next) => {
         });
     }
     next();
-    // .THEN SOLUTION TO ASYNC ISSUE
-    // usernameExists(username).then((results) => {
-    //     if (results) {
-    //         return res.status(422).json({
-    //             message: 'That username is already taken.',
-    //         });
-    //     } else {
-    //         next();
-    //     }
-    // });
 };
 
 module.exports = userCreateValidator;
