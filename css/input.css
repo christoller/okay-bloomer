@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-image: url(https://images.unsplash.com/photo-1599334064100-4d3a0cc7332c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.background-overlay {
+    background-color: rgba(240, 253, 244, 0.9);
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+.search-container {
+    background-color: rgba(240, 253, 244, 0.9);
+}
+
 .loader {
     border: 16px solid #f3f3f3;
     /* Light grey */

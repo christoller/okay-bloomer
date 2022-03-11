@@ -4,6 +4,7 @@ function renderSchedule() {
 
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
+
         if (
             results.day.length == 0 &&
             results.week.length == 0 &&
