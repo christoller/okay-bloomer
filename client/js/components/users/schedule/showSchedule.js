@@ -1,5 +1,7 @@
 function renderSchedule() {
-    page.innerHTML = ``;
+    page.innerHTML = `
+    <p class="error-location"></p>`;
+
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
         if (
@@ -20,6 +22,30 @@ function renderSchedule() {
             page.appendChild(emptySchedule);
         }
 
+        // Create the modal to change the nickname
+        let resultID = '';
+        const modalBox = document.createElement('div');
+        modalBox.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-btn">&times;</span>
+                        <p>Enter new nickname</p>
+                        <input type="text" placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
+                        <button class="changeNickname" data-id="${resultID}" data-action="rename" data-inputfield="${resultID}-week">Change</button>
+                    </div>
+                    `;
+        modalBox.classList.add('change-nickname-modal');
+        page.appendChild(modalBox);
+
+        let closeBtn = document.querySelector('.close-btn');
+        closeBtn.onclick = function () {
+            modalBox.style.display = 'none';
+        };
+        window.onclick = function (e) {
+            if (e.target == modalBox) {
+                modalBox.style.display = 'none';
+            }
+        };
+
         const dayContainer = document.createElement('div');
         const weekContainer = document.createElement('div');
         const monthContainer = document.createElement('div');
@@ -34,35 +60,36 @@ function renderSchedule() {
         monthContainer.setAttribute('id', 'monthContainer');
         results.day.forEach((result) => {
             const item = document.createElement('div');
+            resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
                         <p> ${result.plantName} needs ${result.actionType}</p>
                         <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                        <input type="text" placeholder="Change plant name.." name="new-name" class="new-name" data-id="${result.id}-day">
-                        <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-day">Change plant name</button>
+                        
+                        <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week>Change plant name</button>
                 `;
             dayContainer.appendChild(item);
         });
         page.appendChild(dayContainer);
         results.week.forEach((result) => {
             const item = document.createElement('div');
+            resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
                         <p> ${result.plantName} needs ${result.actionType}</p>
                         <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                        <input type="text" placeholder="Change plant name.." name="new-name" class="new-name" id="${result.id}-week">
-                        <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                        <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
                 `;
             weekContainer.appendChild(item);
         });
         page.appendChild(weekContainer);
         results.month.forEach((result) => {
             const item = document.createElement('div');
+            resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
                         <p> ${result.plantName} needs ${result.actionType}</p>
-                        <input type="text" placeholder="Change plant name.." name="new-name" class="new-name" id="${result.id}-month">
-                        <button class="changeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                        <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
                 `;
             monthContainer.appendChild(item);
         });
@@ -73,20 +100,34 @@ function renderSchedule() {
                 updateSchedule(button.dataset.action, button.dataset.id);
             });
         });
+        // The Change Plant Name button - Opens the modal
+        document
+            .querySelectorAll('button.openChangeNickname')
+            .forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    changeNicknameModal = document.querySelector(
+                        '.change-nickname-modal'
+                    );
+                    changeNicknameModal.style.display = 'block';
+                    changeNicknameModal.dataset.inputField = button.dataset.id;
+                    changeNicknameModal.dataset.id = button.dataset.id;
+                    changeNicknameModal.dataset.action = button.dataset.action;
+                });
+            });
+
+        // The submit button within the modal that sends the patch request to change the name
         document.querySelectorAll('button.changeNickname').forEach((button) => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                let newName = '';
-                const inputFields = document
-                    .querySelectorAll('.new-name')
-                    .forEach((inputField) => {
-                        if (inputField.id === button.dataset.inputfield) {
-                            newName = inputField.value;
-                        }
-                    });
+                const nicknameModal = document.querySelector(
+                    '.change-nickname-modal'
+                );
+                const newName = document.getElementById('new-name').value;
+
                 updateSchedule(
-                    button.dataset.action,
-                    button.dataset.id,
+                    nicknameModal.dataset.action,
+                    nicknameModal.dataset.id,
                     newName
                 );
             });
