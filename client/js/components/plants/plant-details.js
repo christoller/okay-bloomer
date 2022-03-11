@@ -30,7 +30,7 @@ function renderPlant(id) {
             ? (repottingFreq = 'N/A')
             : (repottingFreq = `Every ${plant.repotting_frequency_in_days} days`);
 
-        plant.soilType ? (soilType = plant.soilType) : (soilType = 'N/A');
+        plant.soil_type ? (soilType = plant.soil_type) : (soilType = 'N/A');
 
         sunlight = plant.sunlight;
         location = plant.plant_location;
