@@ -9,8 +9,8 @@ const Plants = {
         });
     },
     getById: (id) => {
-        const query = `SELECT * FROM plants WHERE id = ${id}`;
-        return db.query(query).then((response) => {
+        const query = `SELECT * FROM plants WHERE id = $1`;
+        return db.query(query, [id]).then((response) => {
             return response.rows ? response.rows[0] : {};
         });
     },
