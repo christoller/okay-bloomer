@@ -1,13 +1,23 @@
 const resultsContainer = document.createElement('section');
 
 function renderSearchResults(searchQuery) {
+    const loader = document.querySelector('.loader');
     resultsContainer.innerHTML = '';
     axios.get(`/api/plants?search=${searchQuery}`).then((response) => {
         const results = response.data;
 
-        results.forEach((result) => {
-            const item = document.createElement('div');
-            item.innerHTML = `
+        if (searchQuery == '') {
+            const emptySearchQueryResponse = document.createElement('div');
+            emptySearchQueryResponse.innerHTML = `
+            <p class="text-center mt-12 font-bold">No input entered. Please enter a plant and click search to continue.</p>`;
+            resultsContainer.appendChild(emptySearchQueryResponse);
+        } else {
+            loadingSpinner();
+
+            setTimeout(() => {
+                results.forEach((result) => {
+                    const item = document.createElement('div');
+                    item.innerHTML = `
                 <div id="search-result" onClick="renderPlant(${result.id})" 
                 class="
                 flex flex-wrap  
@@ -31,8 +41,10 @@ function renderSearchResults(searchQuery) {
                     </div>
                 </div>
             `;
-            resultsContainer.appendChild(item);
-        });
+                    resultsContainer.appendChild(item);
+                });
+            }, 1000);
+        }
         page.appendChild(resultsContainer);
     });
 }
