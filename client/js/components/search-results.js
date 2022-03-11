@@ -34,7 +34,7 @@ function renderSearchResults(searchQuery) {
                             <div class="w-full h-px bg-black my-1"></div>
                             <p> ${result.description}</p>
 
-                            <a class=" text-green-900 hover:text-green-600 ease-in duration-200 mt-1 cursor-pointer font-bold">Learn more about ${result.name} here</a>
+                            <a class=" text-green-900 hover:text-green-600 ease-in duration-200 mt-1 cursor-pointer font-bold">Learn more about ${result.name}</a>
 
 
                         </div>
