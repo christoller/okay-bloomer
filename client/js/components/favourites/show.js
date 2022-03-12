@@ -19,7 +19,6 @@ function renderPlantFavourites() {
             page.appendChild(emptyFavourites);
         } else {
             results.forEach((result) => {
-                console.log(result);
                 const item = document.createElement('div');
                 item.innerHTML = `
                 <div id="favourites-result" class="
