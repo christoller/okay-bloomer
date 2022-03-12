@@ -500,14 +500,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .my-2\.5 {
   margin-top: 0.625rem;
   margin-bottom: 0.625rem;
-<<<<<<< HEAD
+
 }
 
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
-=======
->>>>>>> 54d8b136d7e938fa8204e43b5c22f83ee71dc68f
+
 }
 
 .mt-1 {
@@ -558,10 +557,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 54d8b136d7e938fa8204e43b5c22f83ee71dc68f
 .h-px {
   height: 1px;
 }
