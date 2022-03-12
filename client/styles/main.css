@@ -502,6 +502,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.625rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
