@@ -500,6 +500,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .my-2\.5 {
   margin-top: 0.625rem;
   margin-bottom: 0.625rem;
+
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+
 }
 
 .mx-4 {
