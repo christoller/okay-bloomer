@@ -20,7 +20,7 @@ function renderHeader(session = {}) {
         `;
     } else {
         header.innerHTML += `
-        <ul id="navlist" class="flex m-auto justify-center">
+        <ul id="navlist" class="flex m-auto justify-center text-lg">
             <li onClick="renderSearch()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Homepage</li>
             <li class="hidden md:contents">|</li>
             <li onClick="renderSignupForm()" class="px-8 cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110">Sign up</li>
