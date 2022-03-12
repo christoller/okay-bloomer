@@ -4,7 +4,6 @@ function renderSchedule() {
 
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
-
         if (
             results.day.length == 0 &&
             results.week.length == 0 &&
@@ -122,6 +121,7 @@ function renderSchedule() {
                             <div class="item-schedule-btns">
                                 <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
                                 <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                                <button class="deleteScheduleEntry" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
                             </div>
                         </div>
                 `;
@@ -146,6 +146,7 @@ function renderSchedule() {
                             <div class="item-schedule-btns">
                                 <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
                                 <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                                <button class="deleteScheduleEntry" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
                             </div>
                         </div>
                 `;
@@ -165,7 +166,10 @@ function renderSchedule() {
                             rounded-xl
                             shadow-black-500/40">
                             <p> ${result.plantName} needs ${result.actionType}</p>
-                            <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                            <div class="item-schedule-btns">
+                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                                <button class="deleteScheduleEntry" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
+                            </div>
                         </div>
                 `;
             monthContainer.appendChild(item);
@@ -209,5 +213,13 @@ function renderSchedule() {
                 );
             });
         });
+        document
+            .querySelectorAll('button.deleteScheduleEntry')
+            .forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    deleteScheduleEntry(button.dataset.id);
+                });
+            });
     });
 }
