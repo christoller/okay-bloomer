@@ -4,7 +4,7 @@ const router = express.Router();
 const moment = require('moment');
 const req = require('express/lib/request');
 
-const scheduleHander = (
+const scheduleHandler = (
     name,
     nickname,
     actionType,
@@ -54,7 +54,7 @@ router.get('/', (req, res) => {
             never: [],
         };
         for (const row of schedule) {
-            scheduleHander(
+            scheduleHandler(
                 row.name,
                 row.plant_nickname,
                 'watering',
@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
                 row.watering_frequency_in_days,
                 row.id
             );
-            scheduleHander(
+            scheduleHandler(
                 row.name,
                 row.plant_nickname,
                 'fertilising',
@@ -70,7 +70,7 @@ router.get('/', (req, res) => {
                 row.fertilising_frequency_in_days,
                 row.id
             );
-            scheduleHander(
+            scheduleHandler(
                 row.name,
                 row.plant_nickname,
                 'repotting',
@@ -78,7 +78,7 @@ router.get('/', (req, res) => {
                 row.repotting_frequency_in_days,
                 row.id
             );
-            scheduleHander(
+            scheduleHandler(
                 row.name,
                 row.plant_nickname,
                 'pruning',
