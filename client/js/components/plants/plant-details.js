@@ -14,6 +14,37 @@ function renderPlant(id) {
             sunlight,
             location;
 
+        const modalBox = document.createElement('div');
+        modalBox.innerHTML = `
+                    <div class="modal-content w-60 flex justify-center flex-col content-center">
+                    <span class="close-btn flex justify-end cursor-pointer">&times;</span>
+                        <h3 class="text-bold text-lg">Not Logged In!</h3>
+                        <p class="my-6">Please <span class="login-link text-green-700 hover:text-green-400 cursor-pointer ease-in duration-300">Login</span> or <span class="signup-link text-green-700 hover:text-green-400 cursor-pointer ease-in duration-300">Sign up</span> to use this feature!</p>
+                    </div>
+                    `;
+        modalBox.classList.add('not-logged-in-modal');
+        page.appendChild(modalBox);
+
+        let closeBtn = document.querySelector('.close-btn');
+        closeBtn.onclick = function () {
+            modalBox.style.display = 'none';
+        };
+        window.onclick = function (e) {
+            if (e.target == modalBox) {
+                modalBox.style.display = 'none';
+            }
+        };
+
+        const loginLink = document.querySelector('.login-link');
+        const signupLink = document.querySelector('.signup-link');
+
+        loginLink.addEventListener('click', () => {
+            renderLoginForm();
+        });
+        signupLink.addEventListener('click', () => {
+            renderSignupForm();
+        });
+
         plant.fertilising_frequency_in_days == 0
             ? (fertilisingFreq = 'N/A')
             : (fertilisingFreq = `Every ${plant.fertilising_frequency_in_days} days`);
@@ -70,14 +101,44 @@ function renderPlant(id) {
             '#add-plant-to-schedule'
         );
 
-        addPlantToFavouritesButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            addPlantToFavourites(plant);
+        getSession().then((session) => {
+            if (session.username == null) {
+                addPlantToFavouritesButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const notLoggedInModal = document.querySelector(
+                        '.not-logged-in-modal'
+                    );
+                    notLoggedInModal.style.display = 'block';
+                });
+
+                addPlantToScheduleButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const notLoggedInModal = document.querySelector(
+                        '.not-logged-in-modal'
+                    );
+                    notLoggedInModal.style.display = 'block';
+                });
+            } else {
+                addPlantToFavouritesButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    addPlantToFavourites(plant);
+                });
+
+                addPlantToScheduleButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    addPlantToSchedule(plant);
+                });
+            }
         });
 
-        addPlantToScheduleButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            addPlantToSchedule(plant);
-        });
+        // addPlantToFavouritesButton.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     addPlantToFavourites(plant);
+        // });
+
+        // addPlantToScheduleButton.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     addPlantToSchedule(plant);
+        // });
     });
 }
