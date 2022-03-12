@@ -3,6 +3,7 @@ function renderSchedule() {
     <p class="error-location"></p>`;
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
+        console.log(results);
         if (
             results.day.length == 0 &&
             results.week.length == 0 &&
@@ -113,7 +114,8 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <div class="item-text">
+                            <img src="${result.img}">
+                            <div class="item-text">                                
                                 <p class="text-center"> ${result.plantName} needs ${result.actionType}</p>
                             </div>
                             <div class="item-schedule-btns">
@@ -138,6 +140,7 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
+                            <img src="${result.img}">
                             <div class="item-text">
                                 <p class=" text-center"> ${result.plantName} needs ${result.actionType}</p>
                             </div>
@@ -164,6 +167,7 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40">
+                            <img src="${result.img}">
                             <div class="item-text">
                                 <p class="text-center"> ${result.plantName} needs ${result.actionType}</p>
                             </div>
