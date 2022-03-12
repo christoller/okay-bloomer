@@ -31,7 +31,7 @@ function renderSchedule() {
                     <div class="modal-content w-60 flex justify-center flex-col content-center">
                     <span class="close-btn flex justify-end cursor-pointer">&times;</span>
                         <p>Enter new nickname</p>
-                        <input type="text" class="w-1/2 mx-auto my-8  rounded "placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
+                        <input type="text" class="w-1/2 mx-auto my-8 rounded px-4"placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
                         <button class="changeNickname" data-id="${resultID}" data-action="rename" data-inputfield="${resultID}-week">Change</button>
                     </div>
                     `;
