@@ -1,10 +1,8 @@
 function renderSchedule() {
     page.innerHTML = `
     <p class="error-location"></p>`;
-
     axios.get(`/api/schedule/`).then((response) => {
         const results = response.data;
-
         if (
             results.day.length == 0 &&
             results.week.length == 0 &&
@@ -22,8 +20,6 @@ function renderSchedule() {
                 </div>`;
             page.appendChild(emptySchedule);
         }
-
-        // Create the modal to change the nickname
         let resultID = '';
         const modalBox = document.createElement('div');
         modalBox.innerHTML = `
@@ -37,7 +33,6 @@ function renderSchedule() {
                     `;
         modalBox.classList.add('change-nickname-modal');
         page.appendChild(modalBox);
-
         let closeBtn = document.querySelector('.close-btn');
         closeBtn.onclick = function () {
             modalBox.style.display = 'none';
@@ -184,7 +179,6 @@ function renderSchedule() {
                 updateSchedule(button.dataset.action, button.dataset.id);
             });
         });
-        // The Change Plant Name button - Opens the modal
         document
             .querySelectorAll('button.openChangeNickname')
             .forEach((button) => {
@@ -199,8 +193,6 @@ function renderSchedule() {
                     changeNicknameModal.dataset.action = button.dataset.action;
                 });
             });
-
-        // The submit button within the modal that sends the patch request to change the name
         document.querySelectorAll('button.changeNickname').forEach((button) => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();

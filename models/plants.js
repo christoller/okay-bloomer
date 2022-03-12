@@ -14,12 +14,7 @@ const Plants = {
             return response.rows ? response.rows[0] : {};
         });
     },
-    // getByName: (name) => {
-    //     const query = `SELECT * FROM plants WHERE name ILIKE $1`;
-    //     return db.query(query, [`%${name}%`]).then((response) => {
-    //         return response.rows ? response.rows[0] : {};
-    //     });
-    // },
+
     create: ({
         name,
         latin_name,

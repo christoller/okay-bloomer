@@ -33,13 +33,7 @@ const Users = {
                 : null;
         });
     },
-    // ONE WAY TO SOLVE ASYNC ISSUE
-    // usernameExists: (username) => {
-    //     const query = 'SELECT * FROM users WHERE username = $1';
-    //     return db.query(query, [username]).then((response) => {
-    //         return response.rows && response.rows.length > 0;
-    //     });
-    // },
+
     create: ({ username, password, email }) => {
         const query =
             'INSERT INTO users (username, password, email) VALUES($1, $2, $3) RETURNING *';

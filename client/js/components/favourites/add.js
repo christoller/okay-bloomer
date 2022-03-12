@@ -2,12 +2,8 @@ function addPlantToFavourites(plant) {
     const body = {
         plant_id: plant.id,
     };
-
-    // Get list of favourite plants
     axios.get(`/api/favourites/`).then((response) => {
         const results = response.data;
-
-        // If no plants in the favourites, just add the plant
         if (results == null) {
             axios
                 .post('/api/favourites/', body)
@@ -17,8 +13,7 @@ function addPlantToFavourites(plant) {
                 .catch((error) => {
                     displayError(error.response.data.message);
                 });
-        } // else check if plant is already in favourites
-        else {
+        } else {
             const duplicatePlants = (favouritePlant) =>
                 favouritePlant.id == plant.id;
             if (results.some(duplicatePlants)) {
@@ -33,11 +28,8 @@ function addPlantToFavourites(plant) {
                 console.log('plant duplicate');
 
                 plantError.appendChild(duplicatePlantResponse);
-                // If plant already in favourites, deactivates add button
                 addToFavouritesBtn.disabled = true;
-            }
-            // if no duplicates, add to favourites
-            else {
+            } else {
                 axios
                     .post('/api/favourites/', body)
                     .then((response) => {

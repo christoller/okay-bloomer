@@ -29,7 +29,6 @@ function renderSearch() {
         e.preventDefault();
         renderSearchResults(searchInput.value);
 
-        // Disables the search button until search results have loaded to prevent multiple loading spinners/search results
         searchButton.disabled = true;
         setTimeout(() => {
             searchButton.disabled = false;

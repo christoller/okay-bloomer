@@ -7,7 +7,6 @@ function addPlantToSchedule(plant) {
     axios
         .post('/api/schedule/', body)
         .then((response) => {
-            // Is a 2XX response code
             renderSchedule();
             const plantAddedNotification = document.createElement('div');
             plantAddedNotification.style =
@@ -21,8 +20,6 @@ function addPlantToSchedule(plant) {
             console.log('Success');
         })
         .catch((error) => {
-            // Is a greater than 2XX response code. E.g. 422, 500 error
-            // Only runs on Error
             displayError(error.response.data.message);
         });
 

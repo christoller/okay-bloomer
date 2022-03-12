@@ -5,8 +5,6 @@ function renderPlantFavourites() {
 
     axios.get(`/api/favourites/`).then((response) => {
         const results = response.data;
-        console.log(results);
-
         if (results == null) {
             const emptyFavourites = document.createElement('div');
             emptyFavourites.innerHTML = `
@@ -23,7 +21,6 @@ function renderPlantFavourites() {
             results.forEach((result) => {
                 console.log(result);
                 const item = document.createElement('div');
-
                 item.innerHTML = `
                 <div id="favourites-result" class="
                 w-2/3 py-8 px-6 
@@ -36,7 +33,6 @@ function renderPlantFavourites() {
                         <div class="justify-center">
                             <h3 class="text-2xl"> ${result.name} </h3><br>
                             <p > ${result.description} <a onClick="renderPlant(${result.id})"class=" text-green-900 hover:text-green-600 ease-in duration-200 mt-1 cursor-pointer font-bold" >Learn more.</a></p><br>
-
                             <button id="delete" data-favourite_id="${result.favourite_id}"class="delete-favourite text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Remove ${result.name} from favourites</button>
                         </div>
                     </div>
