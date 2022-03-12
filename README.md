@@ -10,7 +10,7 @@ This app helps users create their plant care schedule. Users can fetch info from
 
 https://okay-bloomer.herokuapp.com/
 
-# Tech Used:
+# Tech Used
 
 -   HTML
 -   CSS
@@ -20,7 +20,7 @@ https://okay-bloomer.herokuapp.com/
 -   Tailwindcss
 -   Heroku
 
-# User Stories:
+# User Stories
 
 -   As a user, I want to look up different plant types so that I know how to care for my plants
 -   As a user, I want to log in and create my own schedule, to stay on top of my plant care
