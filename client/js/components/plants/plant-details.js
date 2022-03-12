@@ -37,7 +37,9 @@ function renderPlant(id) {
 
         detail.appendChild(plantDiv).innerHTML = `
             <div id="plant-details-container" class="bg-green-50 rounded-lg w-9/12 mt-6 mx-auto mb-9 flex flex-wrap gap-6 p-8 shadow-lg shadow-black-500/40">
-                <img src="${plant.image_url}" class="w-1/4 h-1/4 "></img>
+                <img src="${
+                    plant.image_url
+                }" class="w-1/4 h-1/4 rounded-xl"></img>
                 <div id="plant-details" class="flex flex-col gap-1">
                 <h3><span class="font-bold">Name:</span> ${plant.name}</h3>
                 <div><span class="font-bold">Latin Name:</span> ${
@@ -56,10 +58,11 @@ function renderPlant(id) {
                 <div><span class="font-bold">Soil Type:</span> ${soilType}</div>
                 </div>
                 <div>${plant.description}</div>
-                
-                <button id="add-plant-to-schedule" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Schedule</button>
-                <button id="add-plant-to-favourites" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Favourites</button>
-                <div class='pt-2 text-red-600 plant-error'></div>
+                <div>
+                    <button id="add-plant-to-schedule" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110 mx-4">Add to Schedule</button>
+                    <button id="add-plant-to-favourites" class="text-white hover:bg-green-600  bg-green-900  px-8 p-2 rounded-full ease-in duration-300 hover:scale-110">Add to Favourites</button>
+                    <div class='pt-2 text-red-600 plant-error'></div>
+                </div>
             </div>
         `;
         const addPlantToFavouritesButton = document.querySelector(
