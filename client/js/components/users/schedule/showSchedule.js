@@ -55,11 +55,11 @@ function renderSchedule() {
         weekContainer.classList.add('timeContainer');
         monthContainer.classList.add('timeContainer');
         dayContainer.innerHTML =
-            '<h1 class="text-center font-bold mt-12">To Do Today!</h1>';
+            '<h1 class="text-center font-bold text-lg mt-12">To Do Today!</h1>';
         weekContainer.innerHTML =
-            '<h1 class="text-center font-bold mt-8">To Do This week!</h1>';
+            '<h1 class="text-center font-bold text-lg mt-8">To Do This Week!</h1>';
         monthContainer.innerHTML =
-            '<h1 class="text-center font-bold mt-8">To Do This Month!</h1>';
+            '<h1 class="text-center font-bold text-lg mt-8">To Do This Month!</h1>';
         dayContainer.setAttribute('id', 'dayContainer');
         weekContainer.setAttribute('id', 'weekContainer');
         monthContainer.setAttribute('id', 'monthContainer');
@@ -112,16 +112,18 @@ function renderSchedule() {
             resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
-                        <div class="item-container flex flex-nowrap  
+                        <div class="item-container
                             w-2/3 py-8 px-6 
                             mx-auto my-3 justify-center 
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <p> ${result.plantName} needs ${result.actionType}</p>
+                            <div class="item-text">
+                                <p class="text-center"> ${result.plantName} needs ${result.actionType}</p>
+                            </div>
                             <div class="item-schedule-btns">
                                 <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                            <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week>Change plant name</button>
                             </div>
                         </div>
                 `;
@@ -153,19 +155,24 @@ function renderSchedule() {
             weekContainer.appendChild(item);
         });
         page.appendChild(weekContainer);
+
         results.month.forEach((result) => {
             const item = document.createElement('div');
             resultID = result.id;
             item.classList.add('schedule-result');
             item.innerHTML = `
-                        <div class="item-container flex flex-nowrap  
+                        <div class="item-container
                             w-2/3 py-8 px-6 
                             mx-auto my-3 justify-center 
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40">
-                            <p> ${result.plantName} needs ${result.actionType}</p>
-                            <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                            <div class="item-text">
+                                <p class="text-center"> ${result.plantName} needs ${result.actionType}</p>
+                            </div>
+                            <div class="item-schedule-btns">
+                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                            </div>
                         </div>
                 `;
             monthContainer.appendChild(item);
