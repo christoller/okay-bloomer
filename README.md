@@ -19,8 +19,15 @@ https://okay-bloomer.herokuapp.com/
 
 # User Stories
 - As a user, I want to look up different plant types so that I know how to care for my plants
-- As a user, I want to search for plants that match my growing conditions so that I can grow the best garden
 - As a user, I want to log in and create my own schedule, to stay on top of my plant care
-- As a user, I want to create custom plant listings, so that I can add my plants to my plant care schedule
 - As a user, I want favourite specific plant listings, so that I don’t have to continue to search the plant database
-- As a user, I want to connect with other gardeners to share tips and plant schedules so that I can become a better gardener
+
+# Wireframes
+![Ok Bloomer wireframes](https://media.giphy.com/media/dQK5PmRLUtNWmGk1d1/giphy.gif)
+
+# Next Steps
+- User enhancements - adding super users, and the ability for super users to create their own plant listings 
+- Schedule enhancements - revising our logic for 'task completed' and task bucketing (day, week, month)
+- Searrch enhancements - offering users the ability to search or filter by growing conditions
+- Community - building out blog, social community functionality so users can connect with others
+- Integration of a weather API to inform the plant care schedule
