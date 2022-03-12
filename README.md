@@ -38,6 +38,6 @@ https://okay-bloomer.herokuapp.com/
 
 -   User enhancements - adding super users, and the ability for super users to create their own plant listings
 -   Schedule enhancements - revising our logic for 'task completed' and task bucketing (day, week, month)
--   Searrch enhancements - offering users the ability to search or filter by growing conditions
+-   Search enhancements - offering users the ability to search or filter by growing conditions
 -   Community - building out blog, social community functionality so users can connect with others
 -   Integration of a weather API to inform the plant care schedule
