@@ -3,7 +3,7 @@
 # What is it?
 Staying on top of the different needs of each of your plant babies is hard work; knowing when to water, when to fertilise, how much light is needed, when to repot is too much work. But, plants are lovely and there are heaps of benefits in having them around. You just need a helpful tool to stay on top of your plant care routine. That’s where this app comes in.
 
-This app helps users create their plant care schedule. Users can fetch info from our plants database and create a schedule that is accessed in-app.
+This app helps users create their plant care schedule. Users can fetch info from our plants database and create and manage a schedule that is accessed in-app.
 
 # Take a look:
 https://okay-bloomer.herokuapp.com/
