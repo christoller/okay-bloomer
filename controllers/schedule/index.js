@@ -116,4 +116,11 @@ router.post('/', (req, res) => {
     );
 });
 
+router.delete('/:id', (req, res) => {
+    id = req.params.id;
+    Schedule.delete({ id, user_id: req.session.userId }).then((schedule) => {
+        res.json(schedule);
+    });
+});
+
 module.exports = router;

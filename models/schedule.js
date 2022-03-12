@@ -1,6 +1,5 @@
 const db = require('../database/db');
 
-
 const Schedules = {
     getByUserId: (id) => {
         const query = `SELECT user_plant_schedule.id, name, plant_id, plant_nickname, watering_frequency_in_days, fertilising_frequency_in_days, repotting_frequency_in_days, pruning_frequency_in_days, image_url, last_watering_date, last_fertilising_date, last_repotting_date, last_pruning_date FROM user_plant_schedule INNER JOIN plants ON (user_plant_schedule.plant_id = plants.id)WHERE user_id = $1`;
@@ -50,6 +49,11 @@ const Schedules = {
                     ? response.rows[0]
                     : null;
             });
+    },
+
+    delete: ({ id, user_id }) => {
+        const query = `DELETE FROM user_plant_schedule WHERE id = $1 AND user_id = $2 RETURNING *`;
+        return db.query(query, [id, user_id]);
     },
 };
 
