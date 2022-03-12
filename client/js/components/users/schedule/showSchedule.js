@@ -28,7 +28,7 @@ function renderSchedule() {
                     <div class="modal-content w-60 flex justify-center flex-col content-center">
                     <span class="close-btn flex justify-end cursor-pointer">&times;</span>
                         <p>Enter new nickname</p>
-                        <input type="text" class="w-1/2 mx-auto my-8 rounded px-4"placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
+                        <input type="text" class="modal-input w-1/2 mx-auto my-8 rounded px-4"  placeholder="Change plant name.." name="new-name" id="new-name" data-id="${resultID} id="${resultID}">
                         <button class="changeNickname" data-id="${resultID}" data-action="rename" data-inputfield="${resultID}-week">Change</button>
                     </div>
                     `;
@@ -69,7 +69,7 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <p> Nothing to attend to today!</p>
+                            <p class="text-lg"> Nothing to attend to today!</p>
                         </div>
             `;
             dayContainer.appendChild(emptyTimeframeContainer);
@@ -83,7 +83,7 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <p> Nothing to attend to this week!</p>
+                            <p class="text-lg"> Nothing to attend to this week!</p>
                         </div>
             `;
             weekContainer.appendChild(emptyTimeframeContainer);
@@ -97,7 +97,7 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <p> Nothing to attend to this month!</p>
+                            <p class="text-lg"> Nothing to attend to this month!</p>
                         </div>
             `;
             monthContainer.appendChild(emptyTimeframeContainer);
@@ -114,14 +114,14 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <img src="${result.img}">
+                            <img class="rounded-xl" src="${result.img}" width='100px' height='auto'>
                             <div class="item-text">                                
-                                <p class="text-center"> ${result.plantName} needs ${result.actionType}</p>
+                                <p class="text-center text-lg"> ${result.plantName} needs ${result.actionType}</p>
                             </div>
                             <div class="item-schedule-btns">
-                                <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
-                                <button class="deleteScheduleEntry" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
+                                <button class="refreshTimer cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
+                                <button class="openChangeNickname cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                                <button class="deleteScheduleEntry cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
                             </div>
                         </div>
                 `;
@@ -140,14 +140,14 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40"">
-                            <img src="${result.img}">
+                            <img class="rounded-xl" src="${result.img}" width='100px' height='auto' src="${result.img}">
                             <div class="item-text">
-                                <p class=" text-center"> ${result.plantName} needs ${result.actionType}</p>
+                                <p class=" text-center text-lg"> ${result.plantName} needs ${result.actionType}</p>
                             </div>
                             <div class="item-schedule-btns">
-                                <button class="refreshTimer" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
-                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
-                                <button class="deleteScheduleEntry" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
+                                <button class="refreshTimer cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="${result.actionType}">Task completed!</button>
+                                <button class="openChangeNickname cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-week">Change plant name</button>
+                                <button class="deleteScheduleEntry cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
                             </div>
                         </div>
                 `;
@@ -167,13 +167,13 @@ function renderSchedule() {
                             bg-green-50 shadow-2xl
                             rounded-xl
                             shadow-black-500/40">
-                            <img src="${result.img}">
+                            <img class="rounded-xl" src="${result.img}" width='100px' height='auto' src="${result.img}">
                             <div class="item-text">
-                                <p class="text-center"> ${result.plantName} needs ${result.actionType}</p>
+                                <p class="text-center text-lg"> ${result.plantName} needs ${result.actionType}</p>
                             </div>
                             <div class="item-schedule-btns">
-                                <button class="openChangeNickname" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
-                                <button class="deleteScheduleEntry" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
+                                <button class="openChangeNickname cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="rename" data-inputfield="${result.id}-month">Change plant name</button>
+                                <button class="deleteScheduleEntry cursor-pointer hover:text-green-800 ease-in duration-200 hover:underline hover:font-bold hover:scale-110" data-id="${result.id}" data-action="delete" data-inputfield="${result.id}-week">Delete plant</button>
                             </div>
                         </div>
                 `;

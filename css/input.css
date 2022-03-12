@@ -18,7 +18,9 @@ body {
 .search-container {
     background-color: rgba(240, 253, 244, 0.9);
 }
-
+.modal-input {
+    outline: none;
+}
 .loader {
     border: 16px solid #f3f3f3;
     /* Light grey */
@@ -122,7 +124,7 @@ body {
 }
 .item-text {
      flex-grow: 2;
-     padding-left: 15%;
+     padding-left: 4%;
 }
 
 .item-schedule-btns {
