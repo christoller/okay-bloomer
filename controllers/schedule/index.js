@@ -10,10 +10,11 @@ const scheduleHandler = (
     actionType,
     lastActionDate,
     actionFrequency,
-    id
+    id,
+    img
 ) => {
     let plantName = nickname ? nickname : name;
-    let scheduleEvent = { plantName, actionType, id };
+    let scheduleEvent = { plantName, actionType, id, img };
     let requiringActionDate = moment(lastActionDate).add(
         actionFrequency,
         'days'
@@ -41,13 +42,15 @@ router.get('/', (req, res) => {
             never: [],
         };
         for (const row of schedule) {
+            console.log(row);
             scheduleHandler(
                 row.name,
                 row.plant_nickname,
                 'watering',
                 row.last_watering_date,
                 row.watering_frequency_in_days,
-                row.id
+                row.id,
+                row.image_url
             );
             scheduleHandler(
                 row.name,
@@ -55,7 +58,8 @@ router.get('/', (req, res) => {
                 'fertilising',
                 row.last_fertilising_date,
                 row.fertilising_frequency_in_days,
-                row.id
+                row.id,
+                row.image_url
             );
             scheduleHandler(
                 row.name,
@@ -63,7 +67,8 @@ router.get('/', (req, res) => {
                 'repotting',
                 row.last_repotting_date,
                 row.repotting_frequency_in_days,
-                row.id
+                row.id,
+                row.image_url
             );
             scheduleHandler(
                 row.name,
@@ -71,7 +76,8 @@ router.get('/', (req, res) => {
                 'pruning',
                 row.last_pruning_date,
                 row.pruning_frequency_in_days,
-                row.id
+                row.id,
+                row.image_url
             );
         }
         res.json(results);
