@@ -15,9 +15,6 @@ const favouritesController = require('./controllers/favourites');
 
 const errorHandler = require('./middleware/error_handler');
 const logger = require('./middleware/logger');
-//const isLoggedIn = require('./middleware/is_logged_in'); to discuss with team, put in appropriate routes
-
-// const pg = require('pg');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,16 +22,15 @@ const port = process.env.PORT || 3000;
 app.use(
     expressSession({
         store: new pgSession({
-            pool: db, // Connects to our postgres db
-            createTableIfMissing: true, // Creates a session table in your database (go look at it!)
+            pool: db, 
+            createTableIfMissing: true,
         }),
-        secret: process.env.SESSION_SECRET, // Needs a secret key to keep session data secure
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
     })
 );
 
-// app.use(isLoggedIn); to discuss with team, put in appropriate routes
 app.use(express.static('client'));
 app.use(logger);
 app.use(express.json());
@@ -44,8 +40,6 @@ app.use('/api/sessions', sessionsController);
 app.use('/api/users', usersController);
 app.use('/api/plants', plantsController);
 app.use('/api/favourites', favouritesController);
-
-// app.use('/api/')
 
 app.use(errorHandler);
 

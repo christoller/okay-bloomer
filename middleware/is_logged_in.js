@@ -4,7 +4,6 @@ const isLoggedIn = (req, res, next) => {
             message: 'Please log in to perform this action',
         });
     }
-
     next();
 };
 

@@ -40,13 +40,10 @@ function renderLoginForm() {
             axios
                 .post('/api/sessions', body)
                 .then((response) => {
-                    // Is a 2XX response code
                     renderAppWithSession();
                 })
                 .catch((error) => {
                     console.log(`There was an error ${error.response}`);
-                    // Is a greater than 2XX response code. E.g. 422, 500 error
-                    // Only runs on Error
                     displayError(error.response.data.message);
                 });
         } else {

@@ -11,7 +11,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     db = new pg.Pool({
         database: 'ok_bloomer',
-        // password: 'optional_password', // If you have a password on your local db
     });
 }
 

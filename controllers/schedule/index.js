@@ -18,27 +18,14 @@ const scheduleHandler = (
         actionFrequency,
         'days'
     );
-    // console.log(
-    //     `Plantname: ${plantName}, actionType: ${actionType}, id: ${id}`
-    // );
     if (actionFrequency === 0) {
         results.never.push(scheduleEvent);
     } else if (requiringActionDate.isBefore(moment())) {
         results.day.push(scheduleEvent);
     } else if (requiringActionDate.isBefore(moment().add(7, 'days'))) {
         results.week.push(scheduleEvent);
-        // results.week.forEach((entry) => {
-        //     console.log(
-        //         `This is this weeks entry ${entry.plantName} ${entry.id} ${entry.actionType}`
-        //     );
-        // });
     } else if (requiringActionDate.isBefore(moment().add(28, 'days'))) {
         results.month.push(scheduleEvent);
-        results.month.forEach((entry) => {
-            // console.log(
-            //     `This is this months entry ${entry.plantName} ${entry.id} ${entry.actionType}`
-            // );
-        });
     } else {
         results.longer.push(scheduleEvent);
     }
@@ -87,7 +74,6 @@ router.get('/', (req, res) => {
                 row.id
             );
         }
-        // console.log(results);
         res.json(results);
     });
 });
